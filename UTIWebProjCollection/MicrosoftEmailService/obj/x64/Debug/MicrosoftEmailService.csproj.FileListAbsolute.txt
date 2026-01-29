@@ -1,0 +1,270 @@
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\MicrosoftEmailService.dll.config
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\MicrosoftEmailService.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\MicrosoftEmailService.pdb
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csc.exe
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csc.exe.config
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csc.rsp
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csi.exe
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csi.exe.config
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csi.rsp
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.Managed.Core.targets
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.AppContext.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Collections.Immutable.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Console.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Globalization.Calendars.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.Compression.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.FileSystem.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Net.Http.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Net.Sockets.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Reflection.Metadata.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.ValueTuple.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.XmlDocument.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.XPath.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\vbc.exe
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\vbc.exe.config
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\vbc.rsp
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\VBCSCompiler.exe
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\VBCSCompiler.exe.config
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Antlr3.Runtime.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Core.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Identity.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.Core.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Logging.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Tokens.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Web.Infrastructure.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Newtonsoft.Json.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Buffers.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Diagnostics.DiagnosticSource.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.Data.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.Formatting.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.WinHttpHandler.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Numerics.Vectors.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Security.Cryptography.ProtectedData.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Encodings.Web.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Json.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Threading.Tasks.Extensions.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.ValueTuple.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Helpers.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.WebHost.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Mvc.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Optimization.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Razor.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Deployment.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Razor.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\WebGrease.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Core.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Identity.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.Core.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.Extensions.Msal.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Logging.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Tokens.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Buffers.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Diagnostics.DiagnosticSource.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.Data.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.WinHttpHandler.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Numerics.Vectors.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Security.Cryptography.ProtectedData.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Encodings.Web.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Json.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Threading.Tasks.Extensions.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.ValueTuple.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Newtonsoft.Json.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.Formatting.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Helpers.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.WebHost.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Mvc.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Optimization.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Razor.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Deployment.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Razor.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Antlr3.Runtime.pdb
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.csproj.AssemblyReference.cache
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.csproj.CoreCompileInputs.cache
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\Microsof.3B47331D.Up2Date
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.dll
+D:\CYLSYS\Anil Kumar\UTIWebProjCollection 04 Jan 2024\UTIWebProjCollection\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.pdb
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\MicrosoftEmailService.dll.config
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\MicrosoftEmailService.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\MicrosoftEmailService.pdb
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csc.exe
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csc.exe.config
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csc.rsp
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csi.exe
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csi.exe.config
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\csi.rsp
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.AppContext.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Collections.Immutable.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Console.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Globalization.Calendars.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.Compression.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.FileSystem.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Net.Http.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Net.Sockets.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Reflection.Metadata.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.ValueTuple.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.XPath.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\vbc.exe
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\vbc.exe.config
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\vbc.rsp
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\VBCSCompiler.exe
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\roslyn\VBCSCompiler.exe.config
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Antlr3.Runtime.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Core.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Identity.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.Core.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Logging.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Web.Infrastructure.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Newtonsoft.Json.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Buffers.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.Data.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.Formatting.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.WinHttpHandler.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Numerics.Vectors.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Security.Cryptography.ProtectedData.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Encodings.Web.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Json.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Threading.Tasks.Extensions.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.ValueTuple.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Helpers.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.WebHost.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Mvc.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Optimization.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Razor.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Deployment.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Razor.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\WebGrease.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Core.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Azure.Identity.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Graph.Core.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.Identity.Client.Extensions.Msal.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Logging.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Buffers.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Memory.Data.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.WinHttpHandler.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Numerics.Vectors.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Security.Cryptography.ProtectedData.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Encodings.Web.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Text.Json.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Threading.Tasks.Extensions.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.ValueTuple.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Newtonsoft.Json.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Net.Http.Formatting.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Helpers.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Http.WebHost.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Mvc.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Optimization.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.Razor.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Deployment.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\System.Web.WebPages.Razor.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Antlr3.Runtime.pdb
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.csproj.AssemblyReference.cache
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.csproj.CoreCompileInputs.cache
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\Microsof.3B47331D.Up2Date
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.dll
+D:\Bhaneshvar\UTIWebProjCollection\MicrosoftEmailService\obj\x64\Debug\MicrosoftEmailService.pdb

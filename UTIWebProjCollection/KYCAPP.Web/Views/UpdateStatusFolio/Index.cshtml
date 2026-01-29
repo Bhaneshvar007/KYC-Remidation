@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Update Status of Folio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Update Status of Folio</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="UpdateStatusFolio">
+    <div class="container">
+        <div class="panel panel-default">
+            <div style="margin-left:20%">
+                <form class="form-inline">
+                    <div class="mx-sm-3 mb-4">
+                        <label> Date </label>
+                        <input type="date" ng-model="P_Selected_dt" class="form-control" />
+
+
+                    </div>
+                    <div class="mx-sm-3 mb-4">
+                        <label for="ACNO"> Folio Number</label>
+                        <input type="text" ng-model="P_ACNO" class="form-control" />
+                        @*<select class="form-control" ng-model="P_ACNO" ng-options="item.ACNO for item in Folio_list"></select>*@
+
+                    </div>
+                    <div class="mx-sm-3 mb-4">
+                        <label for="INVNAME"> Name </label>
+                        <input type="text" ng-model="P_INVNAME" class="form-control" />
+                        @*<select class="form-control" ng-model="P_INVNAME" ng-options="item.INVNAME for item in Name_list"></select>*@
+
+
+                    </div>
+                    <div class="form-group mx-sm-3 mb-4">
+                        <button type="submit" name="Search" style="margin-top:12px;" class="btn btn-primary mb-2" ng-click="GetGridRecord(P_Selected_dt, P_ACNO, P_INVNAME)">
+                            <span ng-show="searchButtonText == 'Searching'">
+
+                                <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                            </span>
+                            {{ searchButtonText }}
+                        </button>
+                    </div>
+                    <div class="form-group mb-2">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+
+
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>ACNO</th>
+                    <th>FIRST_HOLDER</th>
+                    <th>ADDRESS</th>
+                    <th>Remark</th>
+                    <th>Date</th>
+                    <th>COMMENT</th>
+                    <th>Action</th>
+                    <th>AUM RANGE</th>
+                    <th>BANK_FLAG</th>
+                    <th>KYC_FLAG</th>
+                    <th>AADHARSEEDING_FLAG</th>
+                    <th>NOMINEE_FLAG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in UpdateStatus_Folio_Data track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.ACNO}}</td>
+                    <td>{{item.INVNAME}}</td>
+                    <td>{{item.ADDRESS_OF_FIRST_HOLDER}}</td>
+                    <td>
+                        <select class="form-control" ng-model="item.REMARK_CODE" id="remark_desc" ng-options="item.SLNO as item.Description for item in remarks_list"></select>
+                    </td>
+                    <td><input type="date" max="@DateTime.Now.ToString("yyyy-MM-dd")" ng-model="item.REMARK_DATE" class="form-control" /></td>
+                    <td><input type="text" class="form-control" ng-model="item.REMARK_COMMENT" /></td>
+                    <td><button ng-click="update_remark($index,item)" class="btn-primary form-control disable_color" ng-disabled="item.is_disable_button">Update</button></td>
+                    <td>{{item.AUM_BRACKET}}</td>
+                    <td>{{item.BANK_FLAG}}</td>
+                    <td>{{item.KYCFLAG}}</td>
+                    <td>{{item.AADHARSEEDINGFLAG}}</td>
+                    <td>{{item.NOMINEEFLAG}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Data Acceptance Report-Staff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Data Acceptance Report-Staff</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="kycDataAcceptanceFullReport">
+    <div class="container">
+                <form>
+                    <div class="row">
+                        <div class="form-group col-sm-3">
+                            <label>From Date</label>
+                            <input type="date" class="form-control" ng-model="from_date" />
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label>To Date</label>
+                            <input type="date" class="form-control" ng-model="to_date" />
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <button type="submit" class="btn btn-primary mb-2" ng-disabled="Search_Text===''" ng-click="GetGridRecord(from_date,to_date)">
+                                <span ng-show="searchButtonText == 'Searching'">
+                                    <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                                </span>
+                                {{ searchButtonText }}
+                            </button>
+                        </div>
+                        <div class="form-group mb-2">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <br />
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>Folio_No</th>
+                    <th>Employee Code</th>
+                    <th>Name of Employee</th>
+                    <th>Location Of Employee</th>
+                    <th>Data accepted date</th>
+                    <th>Data accepted  end date (TAT – 20 days)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in Polling_data track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.folio}}</td>
+                    <td>{{item.selected_empid}}</td>
+                    <td>{{item.NAME}}</td>
+                    <td>{{item.LOCATIONNAME}}</td>
+                    <td>{{item.date_accept_dt}} </td>
+                    <td>{{item.date_Accept_end_dt}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

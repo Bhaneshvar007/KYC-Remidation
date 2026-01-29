@@ -1,0 +1,201 @@
+﻿@*@model IEnumerable<Cylsys.Common.MenusModel>*@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    @*<link href="~/Content/bootstrap_working.min.css" rel="stylesheet" type="text/css" />*@
+
+    <!-- <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+     <link href="~/Content/toaster.css" rel="stylesheet" />-->
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    @*<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">*@
+    <link href="~/Content/dt.css" rel="stylesheet" />
+    @* @Styles.Render("~/Content/css")*@
+
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .powered {
+            position: fixed;
+            bottom: 0px;
+            font-size: 18px;
+            background-color: #6610f2;
+        }
+
+        .abc {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/Menu"><img src="~/images/logo_1.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mastersmenu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        KYC Remediation Selection
+                    </a>
+                    <div class="dropdown-menu masterssubmenu" aria-labelledby="navbarDropdown">
+
+                        @if (Convert.ToBoolean(Session["is_cm_login"]))
+                        {
+                            <a class="dropdown-item" href="~/KYCRemediation">Search / Select Records - Self </a>
+                            <a class="dropdown-item" href="~/KYCRemediationCM">Search / Select Records - UFC/CM</a>
+                            <a class="dropdown-item" href="~/KYCRemediation/Download">Download Records - Self</a>
+                            <a class="dropdown-item" href="~/KYCRemediationCM/Download">Download Records - UFC/CM</a>
+                            <a class="dropdown-item" href="~/ReallocationUFCReport">Reallocation of Folios</a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-item" href="~/KYCRemediation">Search / Select Records - Self </a>
+                            <a class="dropdown-item" href="~/KYCRemediation/Download">Download Records - Self</a>
+                        }
+                        <a class="dropdown-item" href="~/UpdateStatusFolio">Update Status of Folio</a>
+                        <a class="dropdown-item" href="~/PanSearch">Income Tax Pan – Name Search</a>
+
+
+                    </div>
+                </li>
+                <li class="nav-item dropdown" style="padding:0px 10px; cursor:pointer;">
+                    <a class="text-light nav-link" id="navbarDropdown" onclick="location.href='@Url.Action("AllIndiaSummaryReport", "ZoneSummaryReport")'" style="text-decoration: none"> Dashboard Report</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle reportsmenu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reports
+                    </a>
+                    <div class="dropdown-menu reportssubmenu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="~/DataAcceptanceFullReport">KYC Record Status – Detailed</a>
+
+                        @if (Session["login_code"].ToString() == "1362" || Session["login_code"].ToString() == "4426" || Session["login_code"].ToString() == "2824" || Session["login_code"].ToString() == "8900")
+                        {
+                            <a class="dropdown-item" href="~/DataAcceptanceRpt_Staff">Data Acceptance Report - Staff</a>
+                        }
+                        <a class="dropdown-item" href="~/SummaryRegionZoneWiseRpt">Summary Report – Abridged</a>
+                        <a class="dropdown-item" href="~/KYCRecordStatusAbridgedRpt">KYC Record Status – Abridged</a>
+                        <a class="dropdown-item" href="~/ReasonWiseReport">Reason Wise Report</a>
+                        <a class="dropdown-item" href="~/Home">Remediated LeaderBoard</a>
+                        @*<a class="dropdown-item" href="~/ContestLeadership">Contest Leadership Board</a>*@
+                        <a class="dropdown-item" href="@Url.Action("ContestLeadership", "ContestLeadership")">Contest Leadership Board</a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+
+
+
+            <div id="myOverlay" class="overlay">
+                <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                <div class="overlay-content">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="form-inline my-2 my-lg-0">
+                <a onclick="openSearch()"></a>
+                <a data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample"> </a>
+                <a href="#" class="pmycollapse text-white">Login : @Session["LoggedInUser"].ToString() (@Session["login_code"].ToString())<i class="fa fa-user-circle text-light ml-2 mr-3"></i> </a>
+            </div>
+        </div>
+
+        <div class="mycollapse" id="usersettings" style="display:none">
+            <div class="card card-body topnotification">
+                <p><i class="fa fa-user-circle-o"></i> <strong>User</strong></p>
+                <hr>
+                @*<span><i class="fa fa-cogs"></i><a href="/Menu"> Setting</a></span><br>*@
+                @*<span><i class="fa fa-sign-in"></i><a href=""> Login</a></span><br>*@
+                <span><i class="fa fa-sign-out"></i><a href="/Login/Logout"> Logout</a></span><br>
+            </div>
+        </div>
+    </nav>
+    <!--Header end-->
+    <div class="container-fluid body-content">
+        @RenderBody()
+
+    </div>
+
+    <div class="col-md-12 powered navbar navbar-expand-lg navbar-dark bg-dark" style="padding:2px">
+        <footer style="width: 100%;">
+
+            <div class="row">
+                <div class="col-md-6 abc" style="color: #ffffff; font-size: 15px">UTI AMC LTD</div>
+                <div class="col-md-6 abc"><a href="https://cylsys.com/" style="color:#ff8c3e;font-size:15px"><u>Powered by Cylsys</u></a></div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
+    <script src="~/Content/CustomFile/c3.min.js"></script>
+    <link href="~/Content/CustomFile/multiple-select.css" rel="stylesheet" /> <!-- new add -->
+    <link href="~/Content/CustomFile/cdnjs.cloudflare.com_ajax_libs_pivottable_2.23.0_pivot.min.css" rel="stylesheet" />
+    <script src="~/Content/CustomFile/jquery.multiselect.js?v=1"></script> <!-- new add -->
+    <script src="~/Content/CustomFile/cdnjs.cloudflare.com_ajax_libs_pivottable_2.23.0_c3_renderers.min.js"></script>
+    <script src="~/Content/CustomFile/cdnjs.cloudflare.com_ajax_libs_pivottable_2.23.0_pivot.min.js"></script>
+    @*<script src="~/Content/CustomFile/pivot.min.js"></script>*@
+    <script>
+
+        $(document).ready(function () {
+
+            $(".mastersmenu").click(function () {
+
+                $(".reportssubmenu").hide();
+
+                var ishow = $(".masterssubmenu").css("display");
+                if (ishow == "none") {
+                    $(".masterssubmenu").show();
+                }
+                else {
+                    $(".masterssubmenu").hide();
+                }
+            });
+
+            $(".reportsmenu").click(function () {
+
+                $(".masterssubmenu").hide();
+
+
+                var ishow = $(".reportssubmenu").css("display");
+                if (ishow == "none") {
+                    $(".reportssubmenu").show();
+                }
+                else {
+                    $(".reportssubmenu").hide();
+                }
+            });
+
+            $(".pmycollapse").click(function () {
+                ////debugger;
+                var ishow = $(".mycollapse").css("display");
+                if (ishow == "none") {
+                    $(".mycollapse").show();
+                }
+                else {
+                    $(".mycollapse").hide();
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>

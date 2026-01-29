@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    #disclaimer {
+        color: orange;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Income Tax Pan – Name Search</a> </li>
+    </ul>
+    <hr class="m-0">
+    <div class="col-md-12">
+        <marquee direction="right" id="disclaimer"> This is sensitive data. Please search the data  if you need to . The input is  being recorded for audit purposes </marquee>
+    </div>
+
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="PanSearch">
+    <div class="container">
+        <div class="panel panel-default">
+            <div style="margin-left:20%">
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-4">
+                        <label> Enter Pan Number </label>
+                        <input type="text" class="form-control" ng-model="PanNo" />
+                    </div>
+                    <div class="form-group mx-sm-3 mb-4">
+                        <button type="submit" class="btn btn-primary mb-2" name="Search" ng-disabled="Search_Text===''" ng-click="GetGridRecord(PanNo)">
+                            <span ng-show="searchButtonText == 'Searching'">
+                                <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                            </span>
+                            {{ searchButtonText }}
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr class="m-0">
+    <br />
+
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>Pan Number </th>
+                    <th>Name As per Pan</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in kyc_pan_grid_data track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.PANNO}}</td>
+                    <td>{{item.NAME_AS_PER_PAN}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

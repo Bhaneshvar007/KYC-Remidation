@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Count Wise Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Count Wise Report </a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<div ng-app="myApp" ng-controller="AllIndiaSummaryRpt">
+
+
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>ACTION_UPDATE</th>
+                    <th>AUM_BRACKET</th>
+                    <th>KYCFLAG</th>
+                    <th>NOMINEEFLAG</th>
+                    <th>AADHARSEEDINGFLAG</th>
+                    <th>BANK_FLAG</th>
+                    <th>SELECTED_EMPID</th>
+                    <th>EMPLOYEENAME</th>
+                    <th>SELECTION_DATE</th>
+                    <th>UFC_NAME</th>
+                    <th>REGIONDESC</th>
+                    <th>ZONEDESC</th>
+                    <th>FOLIO_STATUS</th>
+                    <th>DAYS_OF_SELECTION</th>
+                    <th>ACNO</th>
+                    <th>FIRST_HOLDER_NAME</th>
+                    <th>ADDRESS_OF_FIRST_HOLDER</th>
+                    <th>ARN_CODE</th>
+                    <th>ARN_NAME</th>
+                    <th>ARN_MOBILE</th>
+                    <th>ARN_EMAIL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in CountWise_Data track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.ACTION_UPDATE}}</td>
+                    <td>{{item.AUM_BRACKET}}</td>
+                    <td>{{item.KYCFLAG}}</td>
+                    <td>{{item.NOMINEEFLAG}}</td>
+                    <td>{{item.AADHARSEEDINGFLAG}}</td>
+                    <td>{{item.BANK_FLAG}}</td>
+                    <td>{{item.SELECTED_EMPID}}</td>
+                    <td>{{item.EMPLOYEENAME}}</td>
+                    <td>{{item.SELECTION_DATE}}</td>
+                    <td>{{item.UFC_NAME}}</td>
+                    <td>{{item.REGIONDESC}}</td>
+                    <td>{{item.ZONEDESC}}</td>
+                    <td>{{item.FOLIO_STATUS}}</td>
+                    <td>{{item.DAYS_OF_SELECTION}}</td>
+                    <td>{{item.ACNO}}</td>
+                    <td>{{item.FIRST_HOLDER_NAME}}</td>
+                    <td>{{item.ADDRESS_OF_FIRST_HOLDER}}</td>
+                    <td>{{item.ARN_CODE}}</td>
+                    <td>{{item.ARN_NAME}}</td>
+                    <td>{{item.ARN_MOBILE}}</td>
+                    <td>{{item.ARN_EMAIL}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

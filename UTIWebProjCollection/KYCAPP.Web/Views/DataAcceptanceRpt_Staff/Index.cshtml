@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Data Acceptance Report-Staff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Data Acceptance Report-Staff</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="kycDataAcceptanceReportStaff">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label>From Date</label>
+                    <input type="date" class="form-control" ng-model="from_date" />
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>To Date</label>
+                    <input type="date" class="form-control" ng-model="to_date" />
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Status</label>
+                    <select ng-model="status" ng-options="item.ID as item.Name for item in status_list" class="form-control"></select>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <button type="submit" class="btn btn-primary mb-2 btnSearch" ng-disabled="Search_Text===''" ng-click="GetGridRecord(from_date,to_date,status)">
+                        <span ng-show="searchButtonText == 'Searching'">
+                            <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                        </span>
+                        {{ searchButtonText }}
+                    </button>
+                </div>
+                <div class="form-group mb-2">
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <br />
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>Folio_No</th>
+                    <th>Employee Code</th>
+                    <th>Name of Employee</th>
+                    <th>Location Of Employee</th>
+                    <th>Data accepted date</th>
+                    <th>Data accepted  end date (TAT – 20 days)</th>
+                    <th>AUM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data_acceptance_grid_data_staff track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.FOLIO}}</td>
+                    <td>{{item.SELECTED_EMPID}}</td>
+                    <td>{{item.NAME}}</td>
+                    <td>{{item.LOCATIONNAME}}</td>
+                    <td>{{item.DATE_ACCEPT_DT | date:'dd-MMM-yyyy'}} </td>
+                    <td>{{item.DATE_ACCEPT_END_DT | date:'dd-MMM-yyyy'}}</td>
+                    <td>{{item.AUM}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

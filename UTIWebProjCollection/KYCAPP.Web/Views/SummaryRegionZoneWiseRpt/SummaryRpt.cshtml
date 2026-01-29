@@ -1,0 +1,383 @@
+﻿@{
+    ViewBag.Title = "Summary Region/Zone wise Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<style>
+    .ms-options-wrap .ms-options {
+        position: absolute !important;
+        background: #fff;
+        z-index: 999;
+        border: 1px #d7d7d7 solid;
+        max-width: 300px;
+    }
+
+    .ms-options-wrap ul {
+        list-style: none;
+        padding: 0px;
+        line-height: 30px;
+        margin-top: 10px;
+    }
+
+    .ms-options-wrap button {
+        width: 100%;
+        background: #fff;
+        border: 1px #d8d8d8 solid;
+        height: 32px;
+        border-radius: 2px;
+        text-align: left;
+        overflow: hidden
+    }
+
+    .ms-options-wrap .ms-search input {
+        width: 90%;
+        margin: 10px;
+        padding: 5px 10px;
+    }
+
+    .ms-options-wrap a {
+        padding: 15px
+    }
+
+    /*label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }*/
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Summary Report – Abridged</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div>
+    <div class="container">
+
+        <form>
+            <div class="row">
+
+                <div class="form-group col-sm-3">
+                    <label>Report Date</label>
+                    <input type="date" class="form-control" />
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label style="position: relative;right: 41px;"> Zone </label>
+                    <select class="form-control width_drop m-2" multiple id="ZoneName" onchange="RegionDropdown()">
+                        <option value=""> Select</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label style="position: relative;right: 25px;"> Region </label>
+
+                    <select class="form-control width_drop m-2" id="RegionName" multiple onchange="UFCDropdown()">
+                        <option value=""> Select</option>
+                    </select>
+
+                </div>
+                <div class="form-group col-sm-3">
+                    <label style="position: relative; right: 40px;"> UFC </label>
+                    <select class="form-control width_drop m-2" id="UfcName" multiple>
+
+                        <option value=""> Select</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label style="position: relative; right: 40px;"> Column Name</label>
+                    <select class="form-select" id="columnsName" multiple>
+                        <option value="SR_NO">SR_NO</option>
+                        <option value="Zone">Zone</option>
+                        <option value="Region">Region</option>
+                        <option value="UFC_NAME">UFC_NAME</option>
+                        <option value="AUM_BRACKET">AUM_BRACKET</option>
+                        <option value="FOLIO_COUNT">FOLIO_COUNT</option>
+                        <option value="FOLIO_STATUS">FOLIO_STATUS</option>
+                        <option value="INV_TYPE">INV_TYPE</option>
+                        <option value="PRE_POST_2008">PRE_POST_2008</option>
+                        <option value="SELECTED_BY_UFC_EMP">SELECTED_BY_UFC_EMP</option>
+                        <option value="KYC STATUS_YES">KYC STATUS_YES</option>
+                        <option value="NOMINEE STATUS_YES">NOMINEE STATUS_YES</option>
+                        <option value="AADHARSEEDING STATUS_YES">AADHARSEEDING STATUS_YES</option>
+                        <option value="BANK STATUS_YES">BANK STATUS_YES</option>
+                    </select>
+                </div>
+
+                <div class="form-group btnSearch">
+                    <button type="submit" class="btn btn-primary mb-2" onclick="">
+                        <span>
+                            <img style="width:20px;height:20px; display:none;" src="~/images/loader.gif" />
+                        </span>
+
+                    </button>
+                </div>
+                <div class="form-group btnSearch">
+                    <a href="~/PivotTables" class="btn btn-primary mb-2">
+                        SHOW PIVOT
+                    </a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    <br />
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id" style="display:none;">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th class="SR_NO_col" style="display:none;">SR_NO</th>
+                    <th class="Zone_col" style="display:none;">Zone</th>
+                    <th class="Region_col" style="display:none;">Region</th>
+                    <th class="ufcName_col" style="display:none;">UFC_NAME</th>
+
+                    @*<th>AUM_BRACKET</th>
+                        <th>FOLIO_COUNT</th>
+                        <th>FOLIO_STATUS</th>
+                        <th>INV_TYPE</th>
+                        <th>PRE_POST_2008</th>
+                        <th>SELECTED_BY_UFC_EMP</th>
+                        <th>KYC STATUS_YES</th>
+                        <th>NOMINEE STATUS_YES</th>
+                        <th>AADHARSEEDING STATUS_YES</th>
+                        <th>BANK STATUS_YES</th>*@
+                </tr>
+                @*<tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td id="srNo"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>*@
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function ZoneDropdown() {
+
+        $.ajax({
+            type: "POST",
+            url: "/ReallocationUFCReport/GetZone_dropdown",
+            data: '{}',
+            //headers: { 'X-Button-Name': 'LeaderBoardAll' },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                $("#ZoneName").html("");
+                console.log(result);
+                if (result != null && result != undefined && result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        var option = '<option value="' + result[i].ZONE_UTI + '">' + result[i].ZONE_UTI + '</option>';
+                        $("#ZoneName").append(option);
+                    }
+                    //$('#ZoneName').multiselect('reload');
+                }
+            },
+            failure: function (response) {
+                alert(response.d);
+            },
+            error: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+    ZoneDropdown();
+
+    function RegionDropdown() {
+        var zoneName = $('#ZoneName').val().toString();
+        //$("#slctMappingCriteria option").show();
+        //$('#slctMappingCriteria').multiselect('reload');
+        console.log("Change zone dropdown");
+        $.ajax({
+            url: "/SummaryRegionZoneWiseRpt/GetRegionList",
+            type: "POST",
+            data: { p_zone: zoneName },
+            dataType: "json",
+            success: function (result) {
+                $("#RegionName").html("");
+                console.log(result);
+                if (result != null && result != undefined && result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        var option = '<option value="' + result[i].REGION_NAME_UTI + '">' + result[i].REGION_NAME_UTI + '</option>';
+                        $("#RegionName").append(option);
+                    }
+                    $('#RegionName').multiselect('reload');
+                }
+
+            },
+            error: function (err) {
+                console.error(err.message);
+            },
+        });
+
+    }
+
+
+
+
+    function UFCDropdown() {
+        var RegionName = $('#RegionName').val();
+        var zoneName = $('#ZoneName').val();
+        //$("#slctMappingCriteria option").show();
+        //$('#slctMappingCriteria').multiselect('reload');
+
+        $.ajax({
+            url: "/SummaryRegionZoneWiseRpt/GetUFCList",
+            type: "POST",
+            data: { p_zone: zoneName.toString(), p_region: RegionName.toString() },
+            dataType: "json",
+            success: function (result) {
+                $("#UfcName").html("");
+                console.log(result);
+                if (result != null && result != undefined && result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        var option = '<option value="' + result[i].UFC_NAME_DNQ + '">' + result[i].UFC_NAME_DNQ + '</option>';
+                        $("#UfcName").append(option);
+                    }
+                    $('#UfcName').multiselect('reload');
+                }
+
+            },
+            error: function (err) {
+                console.error(err.message);
+            },
+        });
+
+    }
+    function getSummaryRpt() {
+        $("#table_id").hide();
+        var UfcName = $("#UfcName").val();
+        var RegionName = $("#RegionName").val();
+        var zoneName = $("#ZoneName").val();
+
+        $.ajax({
+            url: "/SummaryRegionZoneWiseRpt/GetSummaryRpt",
+            type: "POST",
+            data: { p_zone: zoneName.toString(), p_region: RegionName.toString(), p_ufc: UfcName.toString() },
+            dataType: "json",
+            success: OnSuccess,
+
+            error: function (err) {
+                console.error(err.message);
+            },
+        });
+    }
+
+    function OnSuccess(response) {
+        var columnsName = $("#columnsName").val();
+        if (columnsName != null || columnsName != "" || columnsName != undefined) {
+            if (columnsName.includes("SR_NO")) {
+                $(".SR_NO_col").show();
+            }
+            if (columnsName.includes("Zone")) {
+                $(".Zone_col").show();
+            }
+            if (columnsName.includes("Region")) {
+                $(".Region_col").show();
+            }
+            if (columnsName.includes("Ufc Name")) {
+                $(".ufcName_col").show();
+            }
+        }
+
+
+        $('#table_id').dataTable().fnDestroy();
+
+        $("#table_id").DataTable(
+            {
+
+                "aoColumnDefs": [
+                    { 'bSortable': false, 'aTargets': [1] },
+                ],
+                bLengthChange: true,
+                //lengthMenu: [[10], [10]],
+                bFilter: false,
+                bSort: true,
+                bPaginate: false,
+                data: response,
+                columns: [
+
+                    { 'data': 'SR_NO', className="SR_NO_col" }
+                    , { data: 'Zone', className="Zone_col" }
+                    , { data: 'Region', className="Region_col" }
+                    , { data: 'UFC Name', className="ufcName_col" }
+                    //, { data: 'UFC_LOC' }
+                    //, { data: 'REGION_NAME' }
+                    //, { data: 'ZONE' }
+                    //, { data: 'REMEDIATED_CNT' }
+                ]
+            });
+    };
+
+    $(document).ready(function () {
+
+
+        $('#ZoneName').multiselect({
+            search: true,
+            selectAll: true
+        });
+        $('#RegionName').multiselect({
+            search: true,
+            selectAll: true
+        });
+        $('#UfcName').multiselect({
+            search: true,
+            selectAll: true
+        });
+        $('#columnsName').multiselect({
+            search: true,
+            selectAll: true
+        });
+
+    });
+
+</script>

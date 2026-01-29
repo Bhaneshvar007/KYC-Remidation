@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Activity Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Activity Report</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="ActivityReport">
+    <div class="container">
+        <div class="panel panel-default">
+            <div style="margin-left:20%">
+                <form class="form-inline">
+
+                    <div class="form-group mb-2">
+                        <label>Activity Date</label>
+                        <input ng-model="AS_ON_DATE" id="AS_ON_DATE" type="date" class="form-control" placeholder="dssd" />
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <button type="submit" class="btn btn-primary mb-2" ng-click="GetGridRecord(AS_ON_DATE,null)">Search</button>
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>Issuer_Name</th>
+                    <th>ISIN</th>
+                    <th>Polling_Level</th>
+                    <th>Polling_Range</th>
+                    <th>Comments_For_Poll_Provider</th>
+                    <th>Updated By</th>
+                    <th>Update Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in FileUploadStatusGridData">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.Issuer_Name}}</td>
+                    <td>{{item.TotalRowCount}}</td>
+                    <td>{{item.UploadDate | date:'dd-MMM-yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

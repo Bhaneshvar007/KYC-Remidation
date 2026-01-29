@@ -1,0 +1,625 @@
+﻿@{
+    ViewBag.Title = "Regional Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+   
+    .starting_count {
+        background: #98AFC7;
+    }
+
+    .selection_stats {
+        /*background: #FFFFC2;*/
+        background: #FFFFE0;
+    }
+
+    .kyc_completed {
+        background: #B5EAAA;
+    }
+
+    .valid_bank_details {
+        background: #FFE5B4;
+    }
+
+    .nominee_updted {
+        background: #FBE7A1;
+    }
+
+    .aadhar_seeded {
+        background: #C3FDB8;
+    }
+    .remediation_cmpltd {
+        background: #E0B0FF;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Regional Summary Report</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+
+@*<div class="bg-white p-3 border">
+        <div class="row">
+            <div class="col-md-12">
+                <h5>North Zone Summary Report</h5>
+            </div>
+        </div>
+    </div>*@
+
+<br>
+<div class="overflow-auto" ng-app="myApp" ng-controller="ZoneSummaryReport">
+
+    <div class="container">
+
+        <form>
+            <div class="row">
+
+                <div class="form-group col-sm-3">
+                    <label>Report Date</label>
+                    <input type="date" class="form-control" ng-model="report_date" ng-disabled="is_dis_reportdate" />
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>AUM Range</label>
+                    <select class="form-control" ng-model="p_aum_bracket" ng-options="item.AUM_BRACKET as item.AUM_BRACKET for item in AUM_Bracket_list" ng-disabled="is_aum_disable">
+                        <option value="" selected="selected"> All</option>
+                    </select>
+                </div>
+
+                <div class="form-group btnSearch">
+                    <button type="submit" class="btn btn-primary mb-2" ng-disabled="is_dis_search_btn" ng-click="GetGridRecord(report_date, p_aum_bracket)">
+                        <span ng-show="searchButtonText == 'Searching'">
+                            <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                        </span>
+                        {{ searchButtonText }}
+                    </button>
+                </div>
+                <div class="form-group mb-2">
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <hr />
+
+    <!--REGIONAL SUMMARY REPORT DATA-->
+    <td align="center">
+        <table cellspacing="0" cellpadding="3" align="Left" rules="all" id="table_id" class="table table-bordered" ng-show="is_display_regionalsmryTbl">
+            <thead>
+                <tr align="center" id="tr" style="background-color:darkgrey">
+                    <td rowspan="2" style="font-weight:bold;">Region</td>
+                    <td colspan="4" style="font-weight:bold;" class="starting_count"> Starting Count </td>
+                    <td colspan="4" style="font-weight:bold;" class="selection_stats">SELECTION Status</td>
+                    <td colspan="4" style="font-weight:bold;" class="remediation_cmpltd">Remediation Completed</td>
+                    <td colspan="4" style="font-weight:bold;" class="kyc_completed">KYC Completed</td>
+                    <td colspan="4" style="font-weight:bold;" class="valid_bank_details">Valid Bank Details</td>
+                    <td colspan="4" style="font-weight:bold;" class="nominee_updted">Nominee Updated</td>
+                    <td colspan="4" style="font-weight:bold;" class="aadhar_seeded">Aadhar Seeded</td>
+                </tr>
+                <tr align="center" id="tr">
+                    <th align="right" scope="col" class="starting_count">Count</th>
+                    <th align="right" scope="col" class="starting_count">%Count of Zone</th>
+                    <th align="right" scope="col" class="starting_count">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="starting_count">%AUM Share</th>
+
+                    <th align="right" scope="col" class="selection_stats">Count</th>
+                    <th align="right" scope="col" class="selection_stats">%Count of Zone</th>
+                    <th align="right" scope="col" class="selection_stats">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="selection_stats">%AUM Share</th>
+
+                    <th align="right" scope="col" class="remediation_cmpltd">Count</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%Count of Zone</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%AUM Share</th>
+
+                    <th align="right" scope="col" class="kyc_completed">Count</th>
+                    <th align="right" scope="col" class="kyc_completed">%Count of Zone</th>
+                    <th align="right" scope="col" class="kyc_completed">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="kyc_completed">%AUM Share</th>
+
+                    <th align="right" scope="col" class="valid_bank_details">Count</th>
+                    <th align="right" scope="col" class="valid_bank_details">%Count of Zone</th>
+                    <th align="right" scope="col" class="valid_bank_details">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="valid_bank_details">%AUM Share</th>
+
+                    <th align="right" scope="col" class="nominee_updted">Count</th>
+                    <th align="right" scope="col" class="nominee_updted">%Count of Zone</th>
+                    <th align="right" scope="col" class="nominee_updted">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="nominee_updted">%AUM Share</th>
+
+                    <th align="right" scope="col" class="aadhar_seeded">Count</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%Count of Zone</th>
+                    <th align="right" scope="col" class="aadhar_seeded">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%AUM Share</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="item in Regional_summary_data track by $index">
+                    <td align="left">
+                        <a href="" ng-click="getGridDetailUFCSummaryReportRegionWise(item.REGION_NAME_UTI, item.ZONE_UTI)">{{item.REGION_NAME_UTI}}</a>
+                    </td>
+
+                    <td align="right" class="starting_count">{{item.CNT_REG}}</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_ZONE}}%</td>
+                    <td align="right" class="starting_count">{{item.AUM_REG}}</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_ZONE}}%</td>
+
+                    <td align="right" class="selection_stats">{{item.CNT_ZON_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_ZONE_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.AUM_ZON_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_ZONE_SEL}}%</td>
+
+                    <td align="right" class="remediation_cmpltd">{{item.CNT_ZON_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_ZONE_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.AUM_ZON_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_ZONE_REM}}%</td>
+
+                    <td align="right" class="kyc_completed">{{item.CNT_REG_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_ZONE_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.AUM_REG_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_ZONE_KYC}}%</td>
+
+                    <td align="right" class="valid_bank_details">{{item.CNT_REG_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_ZONE_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.AUM_REG_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_ZONE_BANK}}%</td>
+
+                    <td align="right" class="nominee_updted">{{item.CNT_REG_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_ZONE_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.AUM_REG_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_ZONE_NOM}}%</td>
+
+                    <td align="right" class="aadhar_seeded">{{item.CNT_REG_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_ZONE_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.AUM_REG_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_ZONE_ASEED}}%</td>
+
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr ng-repeat="item in Total_RegionalSummary">
+                    <td align="left">
+                        {{item.REGION_NAME_UTI}}
+                    </td>
+                    <td align="right" class="starting_count">{{item.CNT_REG}}</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_ZONE}}%</td>
+                    <td align="right" class="starting_count">{{item.AUM_REG}}</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_ZONE}}%</td>
+
+                    <td align="right" class="selection_stats">{{item.CNT_ZON_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_ZONE_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.AUM_ZON_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_ZONE_SEL}}%</td>
+
+                    <td align="right" class="remediation_cmpltd">{{item.CNT_ZON_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_ZONE_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.AUM_ZON_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_ZONE_REM}}%</td>
+
+                    <td align="right" class="kyc_completed">{{item.CNT_REG_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_ZONE_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.AUM_REG_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_ZONE_KYC}}%</td>
+
+                    <td align="right" class="valid_bank_details">{{item.CNT_REG_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_ZONE_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.AUM_REG_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_ZONE_BANK}}%</td>
+
+                    <td align="right" class="nominee_updted">{{item.CNT_REG_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_ZONE_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.AUM_REG_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_ZONE_NOM}}%</td>
+
+                    <td align="right" class="aadhar_seeded">{{item.CNT_REG_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_ZONE_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.AUM_REG_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_ZONE_ASEED}}%</td>
+
+                </tr>
+            </tfoot>
+
+        </table>
+    </td>
+
+    <!--UFC SUMMARY REPORT DATA-->
+    <td align="center">
+        <table cellspacing="0" cellpadding="3" align="Left" rules="all" id="table_id2" class="table table-bordered" ng-show="is_display_UFCSumryTblRegionWise">
+            <thead>
+                <tr align="center" id="tr" style="background-color:darkgrey">
+                    <td rowspan="2" style="font-weight:bold;">UFC_NAME</td>
+                    <td colspan="6" style="font-weight:bold;" class="starting_count"> Starting Count </td>
+                    <td colspan="6" style="font-weight:bold;" class="selection_stats">Selection Count</td>
+                    <td colspan="6" style="font-weight:bold;" class="remediation_cmpltd">Remediation Completed</td>
+                    <td colspan="6" style="font-weight:bold;" class="kyc_completed">KYC Completed</td>
+                    <td colspan="6" style="font-weight:bold;" class="valid_bank_details">Valid Bank Details</td>
+                    <td colspan="6" style="font-weight:bold;" class="nominee_updted">Nominee Updated</td>
+                    <td colspan="6" style="font-weight:bold;" class="aadhar_seeded">Aadhar Seeded</td>
+                </tr>
+                <tr align="center" id="tr">
+
+                    <th align="right" scope="col" class="starting_count">Count</th>
+                    <th align="right" scope="col" class="starting_count">%Count of Region</th>
+                    <th align="right" scope="col" class="starting_count">%Count of Zone</th>
+                    <th align="right" scope="col" class="starting_count">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="starting_count">%AUM Share Region</th>
+                    <th align="right" scope="col" class="starting_count">%AUM Share Zone</th>
+
+                    <th align="right" scope="col" class="selection_stats">Count</th>
+                    <th align="right" scope="col" class="selection_stats">%Count of Region</th>
+                    <th align="right" scope="col" class="selection_stats">%Count of Zone</th>
+                    <th align="right" scope="col" class="selection_stats">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="selection_stats">%AUM Share Region</th>
+                    <th align="right" scope="col" class="selection_stats">%AUM Share Zone</th>
+
+                    <th align="right" scope="col" class="remediation_cmpltd">Count</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%Count of Region</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%Count of Zone</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%AUM Share Region</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%AUM Share Zone</th>
+
+                    <th align="right" scope="col" class="kyc_completed">Count</th>
+                    <th align="right" scope="col" class="kyc_completed">%Count of Region</th>
+                    <th align="right" scope="col" class="kyc_completed">%Count of Zone</th>
+                    <th align="right" scope="col" class="kyc_completed">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="kyc_completed">%AUM Share Region</th>
+                    <th align="right" scope="col" class="kyc_completed">%AUM Share Zone</th>
+
+                    <th align="right" scope="col" class="valid_bank_details">Count</th>
+                    <th align="right" scope="col" class="valid_bank_details">%Count of Region</th>
+                    <th align="right" scope="col" class="valid_bank_details">%Count of Zone</th>
+                    <th align="right" scope="col" class="valid_bank_details">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="valid_bank_details">%AUM Share Region</th>
+                    <th align="right" scope="col" class="valid_bank_details">%AUM Share Zone</th>
+
+                    <th align="right" scope="col" class="nominee_updted">Count</th>
+                    <th align="right" scope="col" class="nominee_updted">%Count of Region</th>
+                    <th align="right" scope="col" class="nominee_updted">%Count of Zone</th>
+                    <th align="right" scope="col" class="nominee_updted">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="nominee_updted">%AUM Share Region</th>
+                    <th align="right" scope="col" class="nominee_updted">%AUM Share Zone</th>
+
+                    <th align="right" scope="col" class="aadhar_seeded">Count</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%Count of Region</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%Count of Zone</th>
+                    <th align="right" scope="col" class="aadhar_seeded">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%AUM Share Region</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%AUM Share Zone</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="item in UFC_Summary_ReportData track by $index">
+                    <td align="left">
+                        <a href="" ng-click="getGridDetailEmployeeSummaryReport_UFCWise(item.REGION_NAME_UTI, item.ZONE_UTI, item.UFC_NAME)">{{item.UFC_NAME}}</a>
+                    </td>
+
+                    <td align="right" class="starting_count">{{item.CNT_UFC}}</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_ZONE}}</td>
+                    <td align="right" class="starting_count">{{item.AUM_UFC}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_ZONE}}%</td>
+
+                    <td align="right" class="selection_stats">{{item.CNT_UFC_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_ZONE_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.AUM_UFC_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_ZONE_SEL}}%</td>
+
+                    <td align="right" class="remediation_cmpltd">{{item.CNT_UFC_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_ZONE_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.AUM_UFC_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_ZONE_REM}}%</td>
+
+                    <td align="right" class="kyc_completed">{{item.CNT_UFC_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_ZONE_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.AUM_UFC_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_ZONE_KYC}}%</td>
+
+                    <td align="right" class="valid_bank_details">{{item.CNT_UFC_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_ZONE_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.AUM_UFC_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_ZONE_BANK}}%</td>
+
+                    <td align="right" class="nominee_updted">{{item.CNT_UFC_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_ZONE_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.AUM_UFC_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_ZONE_NOM}}%</td>
+
+                    <td align="right" class="aadhar_seeded">{{item.CNT_UFC_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_ZONE_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.AUM_UFC_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_ZONE_ASEED}}%</td>
+
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr ng-repeat="item in Total_UFC_Summary_ReportData">
+                    <td align="left">
+                        <a href="">{{item.UFC_NAME}}</a>
+                    </td>
+                    <td align="right" class="starting_count">{{item.CNT_UFC}}</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_ZONE}}</td>
+                    <td align="right" class="starting_count">{{item.AUM_UFC}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_ZONE}}%</td>
+
+                    <td align="right" class="selection_stats">{{item.CNT_UFC_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_ZONE_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.AUM_UFC_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_ZONE_SEL}}%</td>
+
+                    <td align="right" class="remediation_cmpltd">{{item.CNT_UFC_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_ZONE_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.AUM_UFC_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_ZONE_REM}}%</td>
+
+                    <td align="right" class="kyc_completed">{{item.CNT_UFC_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_ZONE_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.AUM_UFC_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_ZONE_KYC}}%</td>
+
+                    <td align="right" class="valid_bank_details">{{item.CNT_UFC_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_ZONE_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.AUM_UFC_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_ZONE_BANK}}%</td>
+
+                    <td align="right" class="nominee_updted">{{item.CNT_UFC_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_ZONE_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.AUM_UFC_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_ZONE_NOM}}%</td>
+
+                    <td align="right" class="aadhar_seeded">{{item.CNT_UFC_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_ZONE_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.AUM_UFC_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_ZONE_ASEED}}%</td>
+
+
+                </tr>
+
+            </tfoot>
+        </table>
+    </td>
+
+    <!--EMPLOYEE SUMMARY REPORT DATA-->
+    <td align="center">
+        <table cellspacing="0" cellpadding="3" align="Left" rules="all" id="table_id3" class="table table-bordered" ng-show="is_display_EMPSumryTblUFCWise">
+            <thead>
+                <tr align="center" id="tr" style="background-color:darkgrey">
+                    <td rowspan="2" style="font-weight:bold;">EMPLOYEE_ID</td>
+                    <td rowspan="2" style="font-weight:bold;">NAME</td>
+                    <td colspan="6" style="font-weight:bold;" class="starting_count"> Starting Count </td>
+                    <td colspan="6" style="font-weight:bold;" class="selection_stats">Selection Count</td>
+                    <td colspan="6" style="font-weight:bold;" class="remediation_cmpltd">Remediation Completed</td>
+                    <td colspan="6" style="font-weight:bold;" class="kyc_completed">KYC Completed</td>
+                    <td colspan="6" style="font-weight:bold;" class="valid_bank_details">Valid Bank Details</td>
+                    <td colspan="6" style="font-weight:bold;" class="nominee_updted">Nominee Updated</td>
+                    <td colspan="6" style="font-weight:bold;" class="aadhar_seeded">Aadhar Seeded</td>
+                </tr>
+                <tr align="center" id="tr">
+
+                    <th align="right" scope="col" class="starting_count">Count</th>
+                    <th align="right" scope="col" class="starting_count">%Count of UFC</th>
+                    <th align="right" scope="col" class="starting_count">%Count of Region</th>
+                    <th align="right" scope="col" class="starting_count">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="starting_count">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="starting_count">%AUM Share Region</th>
+
+                    <th align="right" scope="col" class="selection_stats">Count</th>
+                    <th align="right" scope="col" class="selection_stats">%Count of UFC</th>
+                    <th align="right" scope="col" class="selection_stats">%Count of Region</th>
+                    <th align="right" scope="col" class="selection_stats">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="selection_stats">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="selection_stats">%AUM Share Region</th>
+
+                    <th align="right" scope="col" class="remediation_cmpltd">Count</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%Count of UFC</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%Count of Region</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="remediation_cmpltd">%AUM Share Region</th>
+
+                    <th align="right" scope="col" class="kyc_completed">Count</th>
+                    <th align="right" scope="col" class="kyc_completed">%Count of UFC</th>
+                    <th align="right" scope="col" class="kyc_completed">%Count of Region</th>
+                    <th align="right" scope="col" class="kyc_completed">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="kyc_completed">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="kyc_completed">%AUM Share Region</th>
+
+                    <th align="right" scope="col" class="valid_bank_details">Count</th>
+                    <th align="right" scope="col" class="valid_bank_details">%Count of UFC</th>
+                    <th align="right" scope="col" class="valid_bank_details">%Count of Region</th>
+                    <th align="right" scope="col" class="valid_bank_details">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="valid_bank_details">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="valid_bank_details">%AUM Share Region</th>
+
+                    <th align="right" scope="col" class="nominee_updted">Count</th>
+                    <th align="right" scope="col" class="nominee_updted">%Count of UFC</th>
+                    <th align="right" scope="col" class="nominee_updted">%Count of Region</th>
+                    <th align="right" scope="col" class="nominee_updted">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="nominee_updted">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="nominee_updted">%AUM Share Region</th>
+
+                    <th align="right" scope="col" class="aadhar_seeded">Count</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%Count of UFC</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%Count of Region</th>
+                    <th align="right" scope="col" class="aadhar_seeded">AUM(in Cr)</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%AUM Share UFC</th>
+                    <th align="right" scope="col" class="aadhar_seeded">%AUM Share Region</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in Employee_Summary_ReportData track by $index">
+                    <td align="left">
+                        {{item.EMPLOYEEID}}
+                    </td>
+
+                    <td align="left">
+                        {{item.NAME}}
+                    </td>
+
+                    <td align="right" class="starting_count">{{item.CNT_UFC}}</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_ZON}}</td>
+                    <td align="right" class="starting_count">{{item.AUM_UFC}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_ZONE}}%</td>
+
+                    <td align="right" class="selection_stats">{{item.CNT_UFC_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_ZONE_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.AUM_UFC_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_ZONE_SEL}}%</td>
+
+                    <td align="right" class="remediation_cmpltd">{{item.CNT_UFC_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_ZONE_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.AUM_UFC_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_ZONE_REM}}%</td>
+
+                    <td align="right" class="kyc_completed">{{item.CNT_UFC_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_ZONE_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.AUM_UFC_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_ZONE_KYC}}%</td>
+
+                    <td align="right" class="valid_bank_details">{{item.CNT_UFC_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_ZONE_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.AUM_UFC_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_ZONE_BANK}}%</td>
+
+
+                    <td align="right" class="nominee_updted">{{item.CNT_UFC_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_ZONE_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.AUM_UFC_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_ZONE_NOM}}%</td>
+
+                    <td align="right" class="aadhar_seeded">{{item.CNT_UFC_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_ZONE_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.AUM_UFC_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_ZONE_ASEED}}%</td>
+
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr ng-repeat="item in Total_Employee_Summary_ReportData">
+                    <td align="left" colspan="2">
+                        {{item.NAME}}
+                    </td>
+                    <td align="right" class="starting_count">{{item.CNT_UFC}}</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_CNT_ZONE}}</td>
+                    <td align="right" class="starting_count">{{item.AUM_UFC}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_REG}}%</td>
+                    <td align="right" class="starting_count">{{item.P_AUM_ZONE}}%</td>
+
+                    <td align="right" class="selection_stats">{{item.CNT_UFC_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_CNT_ZONE_SEL}}</td>
+                    <td align="right" class="selection_stats">{{item.AUM_UFC_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_REG_SEL}}%</td>
+                    <td align="right" class="selection_stats">{{item.P_AUM_ZONE_SEL}}%</td>
+
+                    <td align="right" class="remediation_cmpltd">{{item.CNT_UFC_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_CNT_ZONE_REM}}</td>
+                    <td align="right" class="remediation_cmpltd">{{item.AUM_UFC_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_REG_REM}}%</td>
+                    <td align="right" class="remediation_cmpltd">{{item.P_AUM_ZONE_REM}}%</td>
+
+                    <td align="right" class="kyc_completed">{{item.CNT_UFC_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_CNT_ZONE_KYC}}</td>
+                    <td align="right" class="kyc_completed">{{item.AUM_UFC_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_REG_KYC}}%</td>
+                    <td align="right" class="kyc_completed">{{item.P_AUM_ZONE_KYC}}%</td>
+
+                    <td align="right" class="valid_bank_details">{{item.CNT_UFC_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_CNT_ZONE_BANK}}</td>
+                    <td align="right" class="valid_bank_details">{{item.AUM_UFC_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_REG_BANK}}%</td>
+                    <td align="right" class="valid_bank_details">{{item.P_AUM_ZONE_BANK}}%</td>
+
+                    <td align="right" class="nominee_updted">{{item.CNT_UFC_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_CNT_ZONE_NOM}}</td>
+                    <td align="right" class="nominee_updted">{{item.AUM_UFC_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_REG_NOM}}%</td>
+                    <td align="right" class="nominee_updted">{{item.P_AUM_ZONE_NOM}}%</td>
+
+                    <td align="right" class="aadhar_seeded">{{item.CNT_UFC_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_CNT_ZONE_ASEED}}</td>
+                    <td align="right" class="aadhar_seeded">{{item.AUM_UFC_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_REG_ASEED}}%</td>
+                    <td align="right" class="aadhar_seeded">{{item.P_AUM_ZONE_ASEED}}%</td>
+
+
+                </tr>
+
+            </tfoot>
+        </table>
+    </td>
+
+</div>

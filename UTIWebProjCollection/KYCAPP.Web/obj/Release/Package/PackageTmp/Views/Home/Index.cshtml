@@ -1,0 +1,333 @@
+﻿<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    /* Codepen Specific */
+    /* /end Codepen Specific */
+    /* Ladder Navigation */
+    #leaderboard {
+        padding: 25px;
+    }
+
+    .ladder-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background: #5055CB;
+        padding: 10px 25px;
+        border-radius: 10px;
+        border: 1px solid #686EF9;
+    }
+
+    .ladder-title {
+        flex: 2;
+    }
+
+    .ladder-search {
+        flex: 1;
+        padding-right: 25px;
+    }
+
+    .ladder-title {
+        font-size: 20px;
+        color: #888DFF !important;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .ladder-search input {
+        color: white
+    }
+
+        .ladder-search input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #888DFF;
+        }
+
+        .ladder-search input::-moz-placeholder { /* Firefox 19+ */
+            color: #888DFF;
+        }
+
+        .ladder-search input:-ms-input-placeholder { /* IE 10+ */
+            color: #888DFF;
+        }
+
+        .ladder-search input:-moz-placeholder { /* Firefox 18- */
+            color: #888DFF;
+        }
+    /* /end Ladder Navigation */
+    /* Leaderboard Results */
+    .leaderboard-results {
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+        .leaderboard-results thead th {
+            padding: 25px;
+            color: #747474;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .leaderboard-results tbody td {
+            padding: 15px 25px;
+            background: #1a1a1a;
+            font-size: 16px;
+            border-bottom: 5px solid #232323;
+        }
+
+            .leaderboard-results tbody td:nth-of-type(7) {
+                font-weight: bold;
+            }
+
+        .leaderboard-results tbody tr:hover td {
+            background: #1d1d1d;
+        }
+
+        .leaderboard-results tbody tr {
+            color: #747474;
+        }
+
+            .leaderboard-results tbody tr:first-child {
+                color: #686EF9;
+            }
+
+        .leaderboard-results tbody span {
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 50%;
+        }
+
+        .leaderboard-results tbody tr:first-child span {
+            background: #5055CB;
+            color: white;
+        }
+
+        .leaderboard-results tbody tr span {
+            background: #262626;
+            color: #747474;
+        }
+    /* /end Leaderboard Results */
+    .top-rank {
+        /*background: #78899b !important;
+        background-color: #808080 !important;
+        color: white !important;*/
+    }
+
+
+    .firstRank {
+        background-color: #28a745 !important;
+        color: white !important;
+    }
+
+    .SecondRank {
+        background-color: #ff8100 !important;
+        color: white !important;
+    }
+
+    .ThirdRank {
+        background-color: #ffa500 !important;
+        color: white !important;
+    }
+
+    table.dataTable tbody th, table.dataTable tbody td, table.dataTable thead th {
+        padding: 4px 6px !important;
+        white-space: nowrap !important;
+    }
+</style>
+
+<div class="container-wrap">
+    <form method="post" id="leaderboard">
+
+        <div class="col-12 ">
+            <div class="card mt-3 ">
+                <div class="card-header" style="background-color: #383095 !important;color:white !important; text-align:center !important;">
+                    Remediated LeaderBoard
+                </div>
+                <div class="card-body">
+                    <button id="view_all" name="ViewAll" value="ALL" class="btn btn-primary mb-2 btn-small" type="submit">View All</button>
+                    <table id="rankings" class="table table-bordered table-striped" width="80%">
+                        <thead>
+                            <tr>
+                                <th id="col1">Rank</th>
+                                @*<th>EMPLOYEEID</th>*@
+                                <th>Employee Name</th>
+                                @*<th>UFC_CODE</th>*@
+                                <th>UFC / Location Name</th>
+                                <th>Region</th>
+                                <th>Zone</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#view_all').click(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/Get_LeaderBoardData_all",
+                data: '{}',
+                headers: { 'X-Button-Name': 'LeaderBoardAll' },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }
+            });
+        });
+        function OnSuccess(response) {
+            $('#rankings').dataTable().fnDestroy();
+            $('#rankings_info').hide();
+            $("#rankings").DataTable(
+                {
+                    //columnDefs: [{ width:100,targes: 0}],
+                    "createdRow": function (row, data, dataIndex) {
+                        if (dataIndex < 10) {
+                            $(row).addClass('top-rank');
+                        }
+                        if (dataIndex == 0) {
+                            $(row).addClass('firstRank');
+                        }
+                        if (dataIndex == 1) {
+                            $(row).addClass('SecondRank');
+                        }
+                        if (dataIndex == 2) {
+                            $(row).addClass('ThirdRank');
+                        }
+                    },
+                    "aoColumnDefs": [
+                        { 'bSortable': false, 'aTargets': [1] },
+                    ],
+                    bLengthChange: false,
+                    //lengthMenu: [[10], [10]],
+                    bFilter: false,
+                    bSort: true,
+                    bPaginate: false,
+                    data: response,
+                    columns: [{
+                        'data': 'RANK',
+                        width: 70,
+                        className: 'text-center',
+                        render: function (row, data, dataIndex) {
+                            var html = "";
+                            if (row == 1 || row == 2 || row == 3)
+                                html = row;
+                            else
+                                html = row;
+                            return html;
+
+                        }
+                    }
+                        /*, { data: 'EMPLOYEEID' }*/
+                        , { data: 'NAME' }
+                        /*, { data: 'LOCATIONCODE' }*/
+                        , { data: 'UFC_LOC' }
+                        , { data: 'REGION_NAME' }
+                        , { data: 'ZONE', className: 'text-center', width: 70 }
+                        , { data: 'REMEDIATED_CNT', className: 'text-right' }
+                    ]
+                });
+
+            //$('#col1').removeClass("sorting_asc");
+
+        };
+
+
+
+
+
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Home/Get_LeaderBoardData",
+                data: '{}',
+                headers: { 'X-Button-Name': 'LeaderBoard' },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }
+            });
+        });
+
+        function OnSuccess(response) {
+            $('#rankings').dataTable().fnDestroy();
+            $("#rankings").DataTable(
+                {
+                    //columnDefs: [{ width:100,targes: 0}],
+                    "createdRow": function (row, data, dataIndex) {
+                        if (dataIndex < 10) {
+                            $(row).addClass('top-rank');
+                        }
+                        if (dataIndex == 0) {
+                            $(row).addClass('firstRank');
+                        }
+                        if (dataIndex == 1) {
+                            $(row).addClass('SecondRank');
+                        }
+                        if (dataIndex == 2) {
+                            $(row).addClass('ThirdRank');
+                        }
+                    },
+                    "aoColumnDefs": [
+                        { 'bSortable': false, 'aTargets': [1] },
+                    ],
+                    bLengthChange: false,
+                    //lengthMenu: [[10], [10]],
+                    bFilter: false,
+                    bSort: true,
+                    bPaginate: false,
+                    data: response,
+                    columns: [{
+                        'data': 'RANK',
+                        width: 70,
+                        className: 'text-center',
+                        render: function (row, data, dataIndex) {
+                            var html = "";
+                            if (row == 1 || row == 2 || row == 3)
+                                html = row;
+                            else
+                                html = row;
+                            return html;
+
+                        }
+                    }
+                        /*, { data: 'EMPLOYEEID' }*/
+                        , { data: 'NAME' }
+                        /*, { data: 'LOCATIONCODE' }*/
+                        , { data: 'UFC_LOC' }
+                        , { data: 'REGION_NAME' }
+                        , { data: 'ZONE', className: 'text-center', width: 70 }
+                        , { data: 'REMEDIATED_CNT', className: 'text-right' }
+                    ]
+                });
+
+            //$('#col1').removeClass("sorting_asc");
+            $('#dataTables_info').hide();
+            $('#rankings_info').hide()
+        };
+
+
+
+
+
+    })
+</script>

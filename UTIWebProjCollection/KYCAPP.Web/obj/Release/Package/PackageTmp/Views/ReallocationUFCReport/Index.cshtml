@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "Reallocation Same UFC/Other UFC";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .width_drop {
+        width: 179px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Reallocation Same UFC/Other UFC</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<div class="bg-white p-3 border" ng-controller="ReallocationUFCRpt">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" id="ReallocationUFCReport">
+
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td style="height: 52px;width: 450px;">
+                                <div class="col-md-12" style="margin-top: 0px;">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" id="same" name="ufc" value="sameufc" ng-click="refresh_page()" checked>
+                                            </td>
+                                            <td> <label for="same">Reallocation for Same UFC</label></td>
+                                            <td>
+                                                <input type="radio" id="diff" name="ufc" value="diffufc" style="margin-left: 15px;" ng-click="refresh_page()">
+                                            </td>
+                                            <td><label for="diff">Reallocation for Different UFC</label></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="margin-left: 0px;width: 402px;">
+                                <div class="col-md-12" style="margin-top: 0px;height: 60px;width: 400px;">
+                                    <table>
+                                        <tr>
+                                            <td style="padding-left:10px">
+                                                <label>Enter Search Criteria</label>
+                                                <input type="text" class="form-control" id="txtsearch" ng-model="Search_Text" style="margin-left:5px;">
+                                            </td>
+                                            @*<td style="padding-left:10px">
+                                                    <label> AUM Range </label>
+                                                    <select class="form-control" ng-model="p_aum_bracket" ng-options="item.AUM_BRACKET as item.AUM_BRACKET for item in AUM_Bracket_list" ng-disabled="is_aum_disable">
+                                                        <option value="" selected="selected"> All</option>
+                                                    </select>
+                                                </td>*@
+
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="padding-left:10px">
+
+                            <td style="padding-top:10px;">
+
+                                <button type="submit" style="margin-top:12px;" name="Search" class="btn btn-primary mb-2" ng-click="GetGridRecord(Search_Text, p_aum_bracket)">
+                                    <span ng-show="searchButtonText == 'Searching'">
+
+                                        <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                                    </span>
+                                    {{ searchButtonText }}
+                                </button>
+
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="row" id="empgrddetails" style="display: none;">
+        <div class="col-md-12 mt-3" style="margin-top: 0px;">
+
+            <br>
+            <div class="row pt-3" style="margin-left:20px;">
+                <div id="empdetails" style="display: none;">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <label style="position: relative; right: 35px;"> Employee </label>
+
+                                <select class="form-control w-100" ng-model="p_slcted_code_email" ng-options="item as item.Name for item in employee_list">
+                                    <option value="" selected="selected"> Select</option>
+                                </select>
+                            </td>
+                            <td style="padding-top:10px;">
+                                <a href="#" id="btn_search" name="btnsearch" ng-click="save(null,null,null, p_slcted_code_email)" class="btn btn-primary" ng-show="is_show_assign_e">
+                                    <span ng-show="searchButtonText == 'Updating'">
+                                        <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                                    </span>
+                                    {{ updateButtonText }}
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row pt-3">
+                    <div id="grddetails" style="display: none; margin-left:20px;">
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <label style="position: relative;right: 41px;"> Zone </label>
+                                    <select class="form-control width_drop m-2" ng-model="p_zone" ng-options="item.ZONE_UTI as item.ZONE_UTI for item in Zone_list" ng-change="region_dropdown(p_zone)">
+                                        <option value="" selected="selected"> Select</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label style="position: relative;right: 25px;"> Region </label>
+
+                                    <select class="form-control width_drop m-2" ng-model="p_region" ng-options="item.REGION_NAME_UTI as item.REGION_NAME_UTI for item in Region_list" ng-disabled="is_disable_region_dropdown" ng-change="ufc_dropdown(p_zone, p_region)">
+                                        <option value="" selected="selected"> Select</option>
+                                    </select>
+
+                                </td>
+                                <td>
+                                    <label style="position: relative; right: 40px;"> UFC </label>
+                                    <select class="form-control width_drop m-2" ng-model="p_ufc" ng-options="item as item.UFC_NAME for item in ufc_list" ng-disabled="is_disable_ufc_dropdown">
+
+                                        <option value="" selected="selected"> Select</option>
+                                    </select>
+                                </td>
+                                <td style="padding-top:10px;">
+                                    <a href="#" id="btn_search" name="btnsearch" ng-click="save(p_zone, p_region, p_ufc, null)" class="btn btn-primary" ng-show="is_show_assign_z">
+                                        <span ng-show="searchButtonText == 'Updating'">
+                                            <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                                        </span>
+                                        {{ updateButtonText }}
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div style="overflow:auto">
+                <div id="table_id_wrapper" class="dataTables_wrapper no-footer">
+                    <table class="table table-hover table-bordered" id="table_id">
+                        <thead>
+                            <tr style="background-color:darkgrey">
+                                <th>SR_NO</th>
+                                <th>Select All<input type="checkbox" name="all_check" id="select-all"></th>
+                                @*<th>Select All<input type="checkbox" ng-model="SELECT_STATUS" ng-change="CheckboxActiity(0,SELECT_STATUS,1)"></th>*@
+                                <th>ACNO</th>
+                                <th>FIRST_HOLDER</th>
+                                <th>ADDRESS</th>
+                                <th>AUM RANGE</th>
+                                <th>BANK_FLAG</th>
+                                <th>KYC_FLAG</th>
+                                <th>AADHARSEEDING_FLAG</th>
+                                <th>NOMINEE_FLAG</th>
+                                <th>ARN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in Reallocation_Grid_data track by $index">
+                                <td>{{$index+1}}</td>
+                                <td><input type="checkbox" name="single_check" class="row-checkbox sub_chk" data-srno="{{item.SRNO}}" data-invname="{{item.INVNAME}}" data-acno="{{item.ACNO}}" /></td>
+                                @*<td><input type="checkbox" ng-checked="item.SELECT_STATUS" ng-model="item.SELECT_STATUS" ng-change="CheckboxActiity($index,item.SELECT_STATUS,0)" /></td>*@
+                                <td>{{item.ACNO}}</td>
+                                <td>{{item.INVNAME}}</td>
+                                <td>{{item.ADDRESS_OF_FIRST_HOLDER}}</td>
+                                <td>{{item.AUM_BRACKET}}</td>
+                                <td>{{item.BANK_FLAG}}</td>
+                                <td>{{item.KYCFLAG}}</td>
+                                <td>{{item.AADHARSEEDINGFLAG}}</td>
+                                <td>{{item.NOMINEEFLAG}}</td>
+                                <td>{{item.ARN_CODE}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#select-all').on('click', function (e) {
+        if ($(this).is(':checked', true)) {
+            $(".sub_chk").prop('checked', true);
+        }
+        else {
+            $(".sub_chk").prop('checked', false);
+        }
+    });
+
+</script>

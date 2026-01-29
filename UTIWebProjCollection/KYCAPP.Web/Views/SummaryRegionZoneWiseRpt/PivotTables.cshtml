@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "PivotTables";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }*/
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Summary Report – Abridged (Pivot Table)</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div class="">
+
+    <div style="margin-bottom: 5px">
+
+    </div>
+    <div id="myGrid" style="height: 500px; width: 100%;" class="ag-theme-alpine">
+    </div>
+</div>
+<script>var __basePath = './';</script>
+
+<script src="~/Content/Pivot/30.0.6_dist_ag-grid-enterprisePivotTable.min.js"></script>
+
+<link href="~/Content/Pivot/PivotTableStyle.css" rel="stylesheet" />
+
+
+
+<script>
+
+
+agGrid.LicenseManager.setLicenseKey('');
+const gridOptions = {
+    columnDefs: [
+        { field: 'ZONE', rowGroup: true, enableRowGroup: true },
+        { field: 'REGION', rowGroup: true, enableRowGroup: true },
+        { field: 'UFC_NAME', rowGroup: true, enableRowGroup: true, enablePivot: true },
+        { field: 'AUM_BRACKET'},
+        { field: 'FOLIO_STATUS'},
+        { field: 'INV_TYPE'},
+        { field: 'PRE_POST_2008'},
+        { field: 'SELECTED_BY_UFC_EMP'},
+        { field: 'KYC_STATUS_YES'},
+        { field: 'NOMINEE_STATUS_YES'},
+        { field: 'AADHARSEEDING_STATUS_YES'},
+        { field: 'BANK_STATUS_YES'},
+        { field: 'FOLIO_COUNT', aggFunc: 'sum' },
+    ],
+    rowData: JSON.parse('@Html.Raw(ViewBag.jsondata)'),
+    defaultColDef: {
+        flex: 1,
+        minWidth: 150,
+        sortable: true,
+        resizable: true,
+    },
+    autoGroupColumnDef: {
+        minWidth: 250,
+    },
+    sideBar: 'columns',
+};
+
+
+// setup the grid after the page has finished loading
+document.addEventListener('DOMContentLoaded', function () {
+    var gridDiv = document.querySelector('#myGrid');
+    new agGrid.Grid(gridDiv, gridOptions);
+
+    //fetch('olympic-winners.json')
+    //    .then((response) => response.json())
+    //    .then((data) => gridOptions.api.setRowData(data));
+});
+
+</script>

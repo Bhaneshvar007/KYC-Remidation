@@ -1,0 +1,369 @@
+﻿
+@{
+    ViewBag.Title = "Reason Wise Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    /*For POPUP WINDOW */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 150px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        overflow-x: hidden;
+        resize: both;
+        overflow: auto;
+        border: 2px solid black;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Reason Wise Report </a> </li>
+    </ul>
+    <i ng-controller="ReasonWiseReport">
+        <img src="~/Content/DataTables/images/Back.png" alt="" style="cursor: pointer; width:20px;" ng-click="back_Button(p_aum_bracket)">
+    </i>
+    <hr class="m-0">
+</div>
+
+
+<div class="overflow-auto" ng-app="myApp" ng-controller="ReasonWiseReport">
+
+    <div class="container">
+
+        <form>
+            <div class="row" style="margin-top:26px;">
+                <input type="hidden" id="screen_mode" value="" />
+                <div class="form-group col-sm-3 mt-2">
+                    <label>Report Date</label>
+                    <input type="date" class="form-control" ng-model="report_date" ng-disabled="is_dis_reportdate" />
+                </div>
+                <input type="hidden" id="SessionValue" value="@Session["emp_role"]" />
+
+                <div class="form-group btnSearch col-sm-3" style="margin-top:26px;">
+                    <button type="submit" class="btn btn-primary mb-2" ng-disabled="is_dis_search_btn" ng-click="GetGridRecord(report_date)" style="margin-top:10px;">
+                        <span ng-show="searchButtonText == 'Searching'">
+                            <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                        </span>
+                        {{ searchButtonText }}
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    <hr />
+
+    <div style="overflow:auto" ng-show="is_show_zone_grid" class="main">
+        <!--ZONE REASON WISE REPORT-->
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+
+                <tr style="background-color:darkgrey">
+
+                    <th>Zone</th>
+                    <th>Customer shifted from given address & no further contact established</th>
+                    <th>Death reported for primary applicant</th>
+                    <th>Death reported for joint applicants</th>
+                    <th>Transmission reported by customer</th>
+                    <th>No address found</th>
+                    <th>Account Frozen for legal case or law enforcement agencies</th>
+                    <th>Account Frozen as per SEBI Order or Other Security maket agencies</th>
+                    <th>Customer shifted from given address & contact established</th>
+                    <th>Visited address - customer not available</th>
+                    <th>Customer will visit Branch/ MFD for updating the details</th>
+                    <th>Visited/ Contacted customer - KYC & Documents (Bank Details, Nominee) submitted for remediation</th>
+                    <th>Death reported for any applicant (Transmission procedure completed in the folio)</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in ReasonWiseReport_DATA_Zone track by $index">
+
+                    <td><a href="" ng-click="GetGridRecord_Region(report_date,item.ZONE)">{{item.ZONE}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,1 )">{{item.REASON1}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,2 )">{{item.REASON2}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,3 )">{{item.REASON3}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,4 )">{{item.REASON4}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,5 )">{{item.REASON5}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,6 )">{{item.REASON6}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,7 )">{{item.REASON7}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,8 )">{{item.REASON8}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,9 )">{{item.REASON9}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,10 )">{{item.REASON10}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,11 )">{{item.REASON11}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,null,null, null,12 )">{{item.REASON12}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="overflow:auto" ng-show="is_show_region_grid" class="main_region">
+        <!--REGION REASON WISE REPORT-->
+        <table class="table table-hover table-bordered" id="table_id_Region">
+            <thead>
+
+                <tr style="background-color:darkgrey">
+                    <th>Region</th>
+                    <th>Customer shifted from given address & no further contact established</th>
+                    <th>Death reported for primary applicant</th>
+                    <th>Death reported for joint applicants</th>
+                    <th>Transmission reported by customer</th>
+                    <th>No address found</th>
+                    <th>Account Frozen for legal case or law enforcement agencies</th>
+                    <th>Account Frozen as per SEBI Order or Other Security maket agencies</th>
+                    <th>Customer shifted from given address & contact established</th>
+                    <th>Visited address - customer not available</th>
+                    <th>Customer will visit Branch/ MFD for updating the details</th>
+                    <th>Visited/ Contacted customer - KYC & Documents (Bank Details, Nominee) submitted for remediation</th>
+                    <th>Death reported for any applicant (Transmission procedure completed in the folio)</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in ReasonWiseReport_DATA_Region track by $index">
+
+                    <td><a href="" ng-click="GetGridDetail_UFC(report_date,item.ZONE,item.REGION)">{{item.REGION}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,1 )">{{item.REASON1}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,2 )">{{item.REASON2}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,3 )">{{item.REASON3}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,4 )">{{item.REASON4}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,5 )">{{item.REASON5}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,6 )">{{item.REASON6}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,7 )">{{item.REASON7}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,8 )">{{item.REASON8}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,9 )">{{item.REASON9}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,10 )">{{item.REASON10}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,11 )">{{item.REASON11}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION,null, null,12 )">{{item.REASON12}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="overflow:auto" ng-show="is_show_ufc_grid" class="main_ufc">
+        <!--UFC REASON WISE REPORT-->
+        <table class="table table-hover table-bordered" id="table_id_ufc">
+            <thead>
+
+                <tr style="background-color:darkgrey">
+                    <th>UFC</th>
+                    <th>Customer shifted from given address & no further contact established</th>
+                    <th>Death reported for primary applicant</th>
+                    <th>Death reported for joint applicants</th>
+                    <th>Transmission reported by customer</th>
+                    <th>No address found</th>
+                    <th>Account Frozen for legal case or law enforcement agencies</th>
+                    <th>Account Frozen as per SEBI Order or Other Security maket agencies</th>
+                    <th>Customer shifted from given address & contact established</th>
+                    <th>Visited address - customer not available</th>
+                    <th>Customer will visit Branch/ MFD for updating the details</th>
+                    <th>Visited/ Contacted customer - KYC & Documents (Bank Details, Nominee) submitted for remediation</th>
+                    <th>Death reported for any applicant (Transmission procedure completed in the folio)</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in ReasonWiseReport_DATA_UFC track by $index">
+
+                    <td><a href="" ng-click="GetGridDetail_EMP(report_date,item.ZONE,item.REGION,item.UFC_NAME)">{{item.UFC_NAME}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,1 )">{{item.REASON1}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,2 )">{{item.REASON2}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,3 )">{{item.REASON3}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,4 )">{{item.REASON4}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,5 )">{{item.REASON5}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,6 )">{{item.REASON6}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,7 )">{{item.REASON7}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,8 )">{{item.REASON8}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,9 )">{{item.REASON9}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,10 )">{{item.REASON10}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,11 )">{{item.REASON11}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,null,12 )">{{item.REASON12}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div style="overflow:auto" ng-show="is_show_emp_grid" class="main_emp">
+        <!--EMPLOYEE WISE REPORT-->
+        <table class="table table-hover table-bordered" id="table_id_emp">
+            <thead>
+
+                <tr style="background-color:darkgrey">
+                    <th>EMP_ID</th>
+                    <th>EMP_NAME</th>
+                    <th>Customer shifted from given address & no further contact established</th>
+                    <th>Death reported for primary applicant</th>
+                    <th>Death reported for joint applicants</th>
+                    <th>Transmission reported by customer</th>
+                    <th>No address found</th>
+                    <th>Account Frozen for legal case or law enforcement agencies</th>
+                    <th>Account Frozen as per SEBI Order or Other Security maket agencies</th>
+                    <th>Customer shifted from given address & contact established</th>
+                    <th>Visited address - customer not available</th>
+                    <th>Customer will visit Branch/ MFD for updating the details</th>
+                    <th>Visited/ Contacted customer - KYC & Documents (Bank Details, Nominee) submitted for remediation</th>
+                    <th>Death reported for any applicant (Transmission procedure completed in the folio)</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in ReasonWiseReport_DATA_EMP track by $index">
+
+                    <td>{{item.EMPLOYEEID}}</td>
+                    <td>{{item.EMPNAME}}</td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,1 )">{{item.REASON1}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,2 )">{{item.REASON2}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,3 )">{{item.REASON3}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,4 )">{{item.REASON4}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,5 )">{{item.REASON5}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,6 )">{{item.REASON6}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,7 )">{{item.REASON7}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,8 )">{{item.REASON8}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,9 )">{{item.REASON9}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,10 )">{{item.REASON10}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,11 )">{{item.REASON11}}</a></td>
+                    <td><a href="" ng-click="GetPopupReasonwiseRept(report_date,item.ZONE,item.REGION, item.UFC_NAME,item.EMPLOYEEID,12 )">{{item.REASON12}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="myModal" class="modal">
+        @*<center> <h3> AUM Slab </h3> </center>*@
+
+        <div class="modal-content">
+            <span class="close" onclick="close_btn()">&times;</span>
+
+            <div style="overflow-x:scroll;">
+                <table class="table table-hover table-bordered" id="table_id_popup" ng-show="is_show_popup">
+                    <thead>
+                        <tr style="background-color:darkgrey">
+                            <th>SR_NO</th>
+                            <th>REMARK_CODE</th>
+                            <th>REMARK_DESC</th>
+                            <th>REMARK_DATE</th>
+                            <th>REMARK_COMMENT</th>
+                            <th>LATEST_ACTION_NOTE</th>
+                            <th>DATE_OF_LATEST_ACTION</th>
+                            <th>AUM_BRACKET</th>
+                            <th>KYC_FLAG</th>
+                            <th>NOMINEE_FLAG</th>
+                            <th>AADHARSEEDING_FLAG</th>
+                            <th>BANK_FLAG</th>
+                            <th>SELECTED_EMPID</th>
+                            <th>EMPLOYEENAME</th>
+                            <th>SELECTION_DATE</th>
+                            <th>UFC_NAME</th>
+                            <th>REGIONDESC</th>
+                            <th>ZONEDESC</th>
+                            <th>FOLIO_STATUS</th>
+                            <th>DAYS_OF_SELECTION</th>
+                            <th>ACNO</th>
+                            <th>FIRST_HOLDER_NAME</th>
+                            <th>ADDRESS_OF_FIRST_HOLDER</th>
+                            <th>ARN_CODE</th>
+                            <th>ARN_NAME</th>
+                            <th>ARN_MOBILE</th>
+                            <th>ARN_EMAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ReasonWiseReport_DATA_pop track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.REMARK_CODE}}</td>
+                            <td>{{item.ACTION_UPDATE}}</td>
+                            <td>{{item.REMARK_DT}}</td>
+                            <td>{{item.REMARK_COMMENT}}</td>
+                            <td>{{item.LATEST_ACTION_NOTE}}</td>
+                            <td>{{item.DATE_OF_LATEST_ACTION}}</td>
+                            <td>{{item.AUM_BRACKET}}</td>
+                            <td>{{item.KYCFLAG}}</td>
+                            <td>{{item.NOMINEEFLAG}}</td>
+                            <td>{{item.AADHARSEEDINGFLAG}}</td>
+                            <td>{{item.BANK_FLAG}}</td>
+                            <td>{{item.SELECTED_EMPID}}</td>
+                            <td>{{item.EMPLOYEENAME}}</td>
+                            <td>{{item.SELECTION_DATE}}</td>
+                            <td>{{item.UFC_NAME}}</td>
+                            <td>{{item.REGIONDESC}}</td>
+                            <td>{{item.ZONEDESC}}</td>
+                            <td>{{item.FOLIO_STATUS}}</td>
+                            <td>{{item.DAYS_OF_SELECTION}}</td>
+                            <td>{{item.ACNO}}</td>
+                            <td>{{item.FIRST_HOLDER_NAME}}</td>
+                            <td>{{item.ADDRESS_OF_FIRST_HOLDER}}</td>
+                            <td>{{item.ARN_CODE}}</td>
+                            <td>{{item.ARN_NAME}}</td>
+                            <td>{{item.ARN_MOBILE}}</td>
+                            <td>{{item.ARN_EMAIL}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+    function close_btn() {
+        $(".modal").css("display", "none");
+    }
+</script>

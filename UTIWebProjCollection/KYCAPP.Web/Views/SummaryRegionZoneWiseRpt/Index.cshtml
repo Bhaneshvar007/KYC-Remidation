@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Summary Region/Zone wise Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<style>
+    /* label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }*/
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Summary Report – Abridged</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="summaryRegionZoneWise">
+    <div class="container">
+
+        <form>
+            <div class="row">
+                @*<div class="form-group col-sm-3">
+            <label>Zone</label>
+            <input type="text" class="form-control" ng-model="zone" />
+        </div>
+        <div class="form-group col-sm-3">
+            <label>Region</label>
+            <input type="text" class="form-control" ng-model="region" />
+        </div>
+        <div class="form-group col-sm-3">
+            <label>UFC</label>
+            <input type="text" class="form-control" ng-model="ufc" />
+        </div>
+
+
+        <div class="form-group col-sm-3">
+            <label>From Date</label>
+            <input type="date" class="form-control" ng-model="from_date" />
+        </div>*@
+                <div class="form-group col-sm-3">
+                    <label>Report Date</label>
+                    <input type="date" class="form-control" ng-model="report_date" />
+                </div>
+                <div class="form-group btnSearch">
+                    <button type="submit" class="btn btn-primary mb-2" ng-disabled="Search_Text===''" ng-click="GetGridRecord(report_date)">
+                        <span ng-show="searchButtonText == 'Searching'">
+                            <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                        </span>
+                        {{ searchButtonText }}
+                    </button>
+                </div>
+                <div class="form-group btnSearch">
+                    <a href="~/PivotTables" class="btn btn-primary mb-2" ng-show="summary_regionzone_grid_data.length > 0">
+                       SHOW PIVOT
+                    </a>
+                </div>
+                <div class="form-group mb-2">
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <br />
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>Zone</th>
+                    <th>Region</th>
+                    <th>UFC_NAME</th>
+
+                    <th>AUM_BRACKET</th>
+                    <th>FOLIO_COUNT</th>
+                    <th>FOLIO_STATUS</th>
+                    <th>INV_TYPE</th>
+                    <th>PRE_POST_2008</th>
+                    <th>SELECTED_BY_UFC_EMP</th>
+                    <th>KYC STATUS_YES</th>
+                    <th>NOMINEE STATUS_YES</th>
+                    <th>AADHARSEEDING STATUS_YES</th>
+                    <th>BANK STATUS_YES</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td id="srNo"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in summary_regionzone_grid_data track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.ZONE}}</td>
+                    <td>{{item.REGION}}</td>
+                    <td>{{item.UFC_NAME}}</td>
+                    <td>{{item.AUM_BRACKET}}</td>
+                    <td>{{item.FOLIO_COUNT}} </td>
+                    <td>{{item.FOLIO_STATUS}}</td>
+                    <td>{{item.INV_TYPE}}</td>
+                    <td>{{item.PRE_POST_2008}}</td>
+                    <td>{{item.SELECTED_BY_UFC_EMP}}</td>
+                    <td>{{item.KYC_STATUS_YES}}</td>
+                    <td>{{item.NOMINEE_STATUS_YES}}</td>
+                    <td>{{item.AADHARSEEDING_STATUS_YES}}</td>
+                    <td>{{item.BANK_STATUS_YES}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

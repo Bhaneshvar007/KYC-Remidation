@@ -1,0 +1,14 @@
+09-Aug-24 18:51:24	trying to login by :2824
+09-Aug-24 18:51:25	DT row count :1
+09-Aug-24 18:51:25	is_cm_login :False| role :ADMIN
+09-Aug-24 18:51:32	Connection Opened
+09-Aug-24 18:51:32	DataReader Count
+09-Aug-24 18:51:32	Count of GetLeaderBoard : 10
+09-Aug-24 18:54:31	trying to login by :2824
+09-Aug-24 18:54:31	DT row count :1
+09-Aug-24 18:54:31	is_cm_login :False| role :ADMIN
+09-Aug-24 18:54:37	Connection Opened
+09-Aug-24 18:54:37	DataReader Count
+09-Aug-24 18:54:37	Count of GetLeaderBoard : 10
+09-Aug-24 19:00:19	Error in ContestLeadership> GetGridDetailContestLeadershipRept(): ORA-00942: table or view does not exist
+

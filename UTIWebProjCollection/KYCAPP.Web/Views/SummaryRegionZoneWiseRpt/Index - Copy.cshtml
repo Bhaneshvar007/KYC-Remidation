@@ -1,0 +1,376 @@
+﻿@{
+    ViewBag.Title = "Summary Region/Zone wise Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    /* label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }*/
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Summary Report – Abridged</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp">
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="form-group col-sm-3">
+                <label>Report Date</label>
+                <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" id="report_date" />
+            </div>
+            <div class="form-group btnSearch">
+                <button type="button" class="btn btn-primary mb-2" id="search_btn">
+                    <img style="width:20px; height:20px; display:none;" src="~/images/loader.gif" />
+                    Search
+                </button>
+
+            </div>
+            <div class="form-group btnSearch">
+                <button type="button" class="btn btn-primary mb-2" id="show_pivot"> Show Pivot</button>
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+    <div style="overflow:auto" id="table_grid_container">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    @*<th>SR_NO</th>*@
+                    <th>Zone</th>
+                    <th>Region</th>
+                    <th>UFC_NAME</th>
+                    <th>EMPLOYEE_CODE</th>
+                    <th>AUM_BRACKET</th>
+                    <th>FOLIO_COUNT</th>
+                    @*<th>SELECTED</th>
+                        <th>KYC_COMPLIED</th>
+                        <th>NOMINEE_UPDATED</th>
+                        <th>AADHAR_SEEDING_DONE</th>
+                        <th>BANK_STATUS_VALIDATED</th>*@
+                    <th>FOLIO_STATUS</th>
+                    <th>INV_TYPE</th>
+                    <th>PRE_POST_2008</th>
+                    <th>SELECTED_BY_UFC_EMP</th>
+                    <th>KYC STATUS_YES</th>
+                    <th>NOMINEE STATUS_YES</th>
+                    <th>AADHARSEEDING STATUS_YES</th>
+                    <th>BANK STATUS_YES</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @* <tr ng-repeat="item in summary_regionzone_grid_data track by $index">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.ZONE}}</td>
+                        <td>{{item.REGION}}</td>
+                        <td>{{item.UFC_NAME}}</td>
+                        <td>{{item.EMPLOYEE_CODE}}</td>
+                        <td>{{item.AUM_BRACKET}} </td>
+                        <td>{{item.FOLIO_COUNT}}</td>
+                        <td>{{item.SELECTED}}</td>
+                        <td>{{item.KYC_REMEDIATED}}</td>
+                        <td>{{item.NOMINEE_UPDATED}}</td>
+                        <td>{{item.AADHAR_SEEDING_DONE}}</td>
+                        <td>{{item.BANK_STATUS_VALIDATED}}</td>
+                    </tr>*@
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div style="overflow-x:scroll; width:100%; border:1px solid black" id="pivotBodyContainer">
+    <div id="pivotContainer" style="margin: 30px;width:100%; display:none;">
+
+    </div>
+</div>
+
+<div class="example-wrapper">
+    <div id="myGrid" class="ag-theme-alpine">
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $('#search_btn').click(function () {
+
+            $("#search_btn").find("img").show();
+            $("#pivotBodyContainer").hide();
+            $("#pivotContainer").hide();
+            let obj = {};
+            let report_dt = $("#report_date").val();
+            console.log("ReportDat ", report_dt);
+            obj.report_date = report_dt;
+
+            $.ajax({
+                type: "POST",
+                url: "/SummaryRegionZoneWiseRpt/GetGridDetail",
+                data: obj,
+                headers: { 'X-Button-Name': 'Search' },
+                //contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                    $("#search_btn").find("img").hide();
+                }
+            });
+            function OnSuccess(response) {
+                console.log("RESPONSE ", response);
+                let desired_output = (response) => {
+                    let unique_values = response
+                        .map((item) => item.FOLIO_COUNT)
+                        .filter(
+                            (value, index, current_value) => current_value.indexOf(value) === index
+                        );
+                    return unique_values;
+                };
+                var a = desired_output(response)
+                console.log("Value of a", a);
+                a.sort(function (a, b) { return a - b })
+                console.log("Value of a after", a);
+                //for (var i = 0; i < response.length; i++) {
+
+                //console.log("Response ", response[i].FOLIO_COUNT);
+                //}
+                $("#show_pivot").click(function () {
+                    $("#pivotBodyContainer").show();
+                    $("#pivotContainer").show();
+                    $("#table_grid_container").hide();
+                    $(function () {
+                        $("#pivotContainer").pivotUI(
+                            response
+
+                            , {
+
+                                rows: ["ZONE", "REGION", "UFC_NAME", "FOLIO_COUNT"],
+                                cols: ["ZONE"],
+                                aggregatorName: "Count",
+                                rendererName: "Table",
+                                rendererOptions: {
+                                    table: {
+                                        clickCallback: function (e, value, filters, pivotData) {
+                                            var cs = 'editable_' + $(e.srcElement).attr('class').replace(' ', '_').replace(' ', '_');
+                                            var v = value == null ? "" : value;
+                                            if (!$(e.srcElement).children().length > 0) {
+                                                $(e.srcElement).empty();
+                                                $(e.srcElement).append("<input class='" + cs + "' type='text' value='" + v + "'/>");
+
+                                                $(e.srcElement).find('input').focus().keypress(function (event) {
+                                                    var keycode = (event.keyCode ? event.keyCode : event.which);
+                                                    if (keycode == '13') {
+                                                        $(e.srcElement).attr("data-value", parseInt($(e.srcElement).children('input').val()));
+                                                        $(e.srcElement).html(parseInt($(e.srcElement).children('input').val()));
+                                                        $(e.srcElement).remove('input');
+
+                                                        calculateRow(e.srcElement);
+                                                        calculateColumn();
+
+                                                    }
+                                                });
+                                            }
+                                            console.log(pivotData);
+                                        }
+                                    }
+                                }
+                            });
+                    });
+                })
+
+                $('#table_id').dataTable().fnDestroy();
+
+                $("#table_id").DataTable(
+                    {
+
+                        bLengthChange: true,
+                        lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+                        bFilter: true,
+                        bSort: true,
+                        bPaginate: true,
+                        data: response,
+                        columns: [{
+                            'data': 'ZONE',
+                            //width: 70,
+                            //className: 'text-center',
+                            //render: function (row, data, dataIndex) {
+                            //    var html = "";
+                            //    if (row == 1 || row == 2 || row == 3)
+                            //        html = row;
+                            //    else
+                            //        html = row;
+                            //    return html;
+
+                            //}
+                        }
+                            //, { data: 'ZONE' }
+                            , { data: 'REGION' }
+                            , { data: 'UFC_NAME' }
+                            //, { data: 'UFC_LOC' }
+                            , { data: 'EMPLOYEE_CODE' }
+                            , { data: 'AUM_BRACKET' }
+                            , { data: 'FOLIO_COUNT' }
+                            //, { data: 'SELECTED' }
+                            //, { data: 'KYC_REMEDIATED' }
+                            //, { data: 'NOMINEE_UPDATED' }
+                            //, { data: 'AADHAR_SEEDING_DONE' }
+                            //, { data: 'BANK_STATUS_VALIDATED' }
+                            , { data: 'FOLIO_STATUS' }
+                            , { data: 'INV_TYPE' }
+                            , { data: 'PRE_POST_2008' }
+                            , { data: 'SELECTED_BY_UFC_EMP' }
+                            , { data: 'KYC_STATUS_YES' }
+                            , { data: 'NOMINEE_STATUS_YES' }
+                            , { data: 'AADHARSEEDING_STATUS_YES' }
+                            , { data: 'BANK_STATUS_YES' }
+                        ]
+                    });
+
+
+                $("#search_btn").find("img").hide();
+                $("#table_grid_container").show();
+            };
+
+        })
+
+    });
+</script>
+
+
+<script src="~/Content/CustomFile/NewPivotTables/30.0.6_dist_ag-grid-enterprisePivotTable.min.js"></script>
+
+<script>
+
+        agGrid.LicenseManager.setLicenseKey('');
+        const gridOptions = {
+            columnDefs: [
+                { field: 'ZONE', rowGroup: true, enableRowGroup: true },
+                { field: 'REGION', rowGroup: true, enableRowGroup: true, enablePivot: true },
+                //{ field: 'UFC_NAME', rowGroup: true, enableRowGroup: true, enablePivot: true },
+                //{ field: 'sport' },
+                { field: 'FOLIO_COUNT', aggFunc: 'sum' }
+                //{ field: 'silver', aggFunc: 'sum' },
+                //{ field: 'bronze', aggFunc: 'sum' },
+            ],
+            rowData: @Html.Raw(ViewBag.jsondata),
+            defaultColDef: {
+                flex: 1,
+                minWidth: 150,
+                sortable: true,
+                resizable: true,
+            },
+            autoGroupColumnDef: {
+                minWidth: 250,
+            },
+            sideBar: 'columns',
+    };
+     console.log( @Html.Raw(ViewBag.jsondata));
+
+        function onBtNormal() {
+            gridOptions.columnApi.setPivotMode(false);
+            gridOptions.columnApi.applyColumnState({
+                state: [
+                    { colId: 'ZONE', rowGroup: true },
+                    { colId: 'REGION', rowGroup: true },
+                    //{ colId: 'UFC_NAME', rowGroup: true },
+                ],
+                defaultState: {
+                    pivot: false,
+                    rowGroup: false,
+                },
+            });
+        }
+
+        function onBtPivotMode() {
+            gridOptions.columnApi.setPivotMode(true);
+            gridOptions.columnApi.applyColumnState({
+                state: [
+                    { colId: 'ZONE', rowGroup: true },
+                    { colId: 'REGION', rowGroup: true },
+                    //{ colId: 'UFC_NAME', rowGroup: true },
+                ],
+                defaultState: {
+                    pivot: false,
+                    rowGroup: false,
+                },
+            });
+        }
+
+        function onBtFullPivot() {
+            gridOptions.columnApi.setPivotMode(true);
+            gridOptions.columnApi.applyColumnState({
+                state: [
+                    { colId: 'ZONE', rowGroup: true },
+                    { colId: 'REGION', pivot: true },
+                    //{ colId: '', pivot: true },
+                ],
+                defaultState: {
+                    pivot: false,
+                    rowGroup: false,
+                },
+            });
+        }
+
+        // setup the grid after the page has finished loading
+        document.addEventListener('DOMContentLoaded', function () {
+            var gridDiv = document.querySelector('#myGrid');
+            new agGrid.Grid(gridDiv, gridOptions);
+
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "/SummaryRegionZoneWiseRpt/GetPivotTable",
+            //        data: '{}',
+            //        //headers: { 'X-Button-Name': 'LeaderBoardAll' },
+            //        contentType: "application/json; charset=utf-8",
+            //        dataType: "json",
+            //        success: OnSuccess,
+            //        failure: function (response) {
+            //            alert(response.d);
+            //        },
+            //        error: function (response) {
+            //            alert(response.d);
+            //        }
+            //    });
+            //});
+
+
+            //fetch('/SummaryRegionZoneWiseRpt/GetPivotTable')
+            //    .then((response) => response.json())
+            //    .then((data) => {
+            //        let resData = data;
+
+            //        gridOptions.api.setRowData(resData), console.log(resData)
+            //    });
+
+        });
+</script>

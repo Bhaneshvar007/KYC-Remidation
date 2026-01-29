@@ -1,0 +1,287 @@
+﻿@model IEnumerable<KYCAPP.Web.Models.ContestLeadershipModel>
+
+@{
+    ViewBag.Title = "ContestLeadership";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    /* Codepen Specific */
+    /* /end Codepen Specific */
+    /* Ladder Navigation */
+    #leaderboard {
+        padding: 25px;
+    }
+
+    .ladder-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background: #5055CB;
+        padding: 10px 25px;
+        border-radius: 10px;
+        border: 1px solid #686EF9;
+    }
+
+    .ladder-title {
+        flex: 2;
+    }
+
+    .ladder-search {
+        flex: 1;
+        padding-right: 25px;
+    }
+
+    .ladder-title {
+        font-size: 20px;
+        color: #888DFF !important;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .ladder-search input {
+        color: white
+    }
+
+        .ladder-search input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #888DFF;
+        }
+
+        .ladder-search input::-moz-placeholder { /* Firefox 19+ */
+            color: #888DFF;
+        }
+
+        .ladder-search input:-ms-input-placeholder { /* IE 10+ */
+            color: #888DFF;
+        }
+
+        .ladder-search input:-moz-placeholder { /* Firefox 18- */
+            color: #888DFF;
+        }
+    /* /end Ladder Navigation */
+    /* Leaderboard Results */
+    .leaderboard-results {
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+        .leaderboard-results thead th {
+            padding: 25px;
+            color: #747474;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .leaderboard-results tbody td {
+            padding: 15px 25px;
+            background: #1a1a1a;
+            font-size: 16px;
+            border-bottom: 5px solid #232323;
+        }
+
+            .leaderboard-results tbody td:nth-of-type(7) {
+                font-weight: bold;
+            }
+
+        .leaderboard-results tbody tr:hover td {
+            background: #1d1d1d;
+        }
+
+        .leaderboard-results tbody tr {
+            color: #747474;
+        }
+
+            .leaderboard-results tbody tr:first-child {
+                color: #686EF9;
+            }
+
+        .leaderboard-results tbody span {
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 50%;
+        }
+
+        .leaderboard-results tbody tr:first-child span {
+            background: #5055CB;
+            color: white;
+        }
+
+        .leaderboard-results tbody tr span {
+            background: #262626;
+            color: #747474;
+        }
+    /* /end Leaderboard Results */
+    .top-rank {
+        /*background: #78899b !important;
+        background-color: #808080 !important;
+        color: white !important;*/
+    }
+
+
+    .firstRank {
+        background-color: #28a745 !important;
+        color: white !important;
+    }
+
+    .SecondRank {
+        background-color: #ff8100 !important;
+        color: white !important;
+    }
+
+    .ThirdRank {
+        background-color: #ffa500 !important;
+        color: white !important;
+    }
+
+    table.dataTable tbody th, table.dataTable tbody td, table.dataTable thead th {
+        padding: 4px 6px !important;
+        white-space: nowrap !important;
+    }
+</style>
+
+<div class="container-wrap">
+    <form method="post" id="leaderboard">
+
+        <div class="col-12 ">
+            <div class="card mt-3 ">
+                <div class="card-header" style="background-color: #383095 !important;color:white !important; text-align:center !important;">
+                    Contest Leadership Board
+                </div>
+                <div class="card-body">
+                    @*<button id="view_all" name="ViewAll" value="ALL" class="btn btn-primary mb-2 btn-small" type="submit">View All</button>*@
+
+                    <table id="rankings" class="table table-bordered table-striped" width="80%">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Employee ID</th>
+                                <th>Employee Name</th>
+                                <th>Location Code</th>
+                                <th>UFC / Location Name</th>
+                                <th>Region Name</th>
+                                <th>Zone</th>
+                                <th>KYC Compiled Count</th>
+                                <th>Remediated Count</th>
+                                <th>Contest Qualify Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+@*<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/ContestLeadership/Get_LeadershipBoard",
+            headers: { 'X-Button-Name': 'LeaderBoard' },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: OnSuccess,
+            error: function (xhr, status, error) {
+                alert("Error: " + status + " - " + error);
+            }
+        });
+
+        function OnSuccess(response) {
+            // Destroy any existing DataTable instance
+            $('#rankings').DataTable().destroy();
+
+            // Initialize DataTable with new data
+            $("#rankings").DataTable({
+                "createdRow": function (row, data, dataIndex) {
+                    // Apply class names based on rank
+                    if (data.RANK === 1) {
+                        $(row).addClass('firstRank');
+                    } else if (data.RANK === 2) {
+                        $(row).addClass('secondRank');
+                    } else if (data.RANK === 3) {
+                        $(row).addClass('thirdRank');
+                    } else if (dataIndex < 10) {
+                        $(row).addClass('top-rank');
+                    }
+                },
+                "columnDefs": [
+                    { 'sortable': false, 'targets': [1] } // Corrected from 'bSortable' and 'aTargets'
+                ],
+                lengthChange: false,
+                filter: false,
+                sort: true,
+                paginate: false,
+                data: response, // Ensure response is an array of objects
+                columns: [
+                    { data: 'RANK', width: 70, className: 'text-center' },
+                    { data: 'EMPLOYEEID' },
+                    { data: 'NAME' },
+                    { data: 'LOCATIONCODE' },
+                    { data: 'UFC_LOC' },
+                    { data: 'REGION_NAME' },
+                    { data: 'ZONE', className: 'text-center', width: 70 },
+                    { data: 'KYC_Complied_Count' },
+                    { data: 'REMEDIATED_CNT', className: 'text-right' },
+                    { data: 'CONTEST_QUALIFY_STATUS' }
+                ]
+            });
+
+            // Hide DataTables info elements
+            $('#dataTables_info').hide();
+            $('#rankings_info').hide();
+        }
+    });
+</script> *@
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/ContestLeadership/Get_LeadershipBoard",
+            headers: { 'X-Button-Name': 'LeaderBoard' },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: OnSuccess,
+            failure: function (response) {
+                alert(response.d);
+            },
+            error: function (response) {
+                alert(response.d);
+            }
+        });
+
+        function OnSuccess(response) {
+           // console.log(response); 
+
+            // Clear existing table rows
+            $('#rankings tbody').empty();
+
+            // Iterate over the response data and append rows to the table
+            response.forEach(function(item) {
+                $('#rankings tbody').append(
+                    `<tr>
+                        <td class="text-center">${item.RANK}</td>
+                        <td>${item.EMPLOYEEID}</td>
+                        <td>${item.NAME}</td>
+                        <td>${item.LOCATIONCODE}</td>
+                        <td>${item.UFC_LOC}</td>
+                        <td>${item.REGION_NAME}</td>
+                        <td class="text-center">${item.ZONE}</td>
+                        <td>${item.KYC_Complied_Count}</td>
+                        <td class="text-right">${item.REMEDIATED_CNT}</td>
+                        <td>${item.CONTEST_QUALIFY_STATUS}</td>
+                    </tr>`
+                );
+            });
+        }
+    });
+</script>
+

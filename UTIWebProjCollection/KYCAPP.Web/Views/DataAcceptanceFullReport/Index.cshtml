@@ -1,0 +1,449 @@
+﻿@{
+    ViewBag.Title = "Data Acceptance Full Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<style>
+    .ms-options-wrap .ms-options {
+        position: absolute !important;
+        background: #fff;
+        z-index: 999;
+        border: 1px #d7d7d7 solid;
+        max-width: 300px;
+    }
+
+    .ms-options-wrap ul {
+        list-style: none;
+        padding: 0px;
+        line-height: 30px;
+        margin-top: 10px;
+    }
+
+    .ms-options-wrap button {
+        width: 100%;
+        background: #fff;
+        border: 1px #d8d8d8 solid;
+        height: 32px;
+        border-radius: 2px;
+        text-align: left;
+        overflow: hidden
+    }
+
+    .ms-options-wrap .ms-search input {
+        width: 90%;
+        margin: 10px;
+        padding: 5px 10px;
+    }
+
+    .ms-options-wrap a {
+        padding: 15px
+    }
+
+    /*label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }*/
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">KYC Record Status – Detailed</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="kycDataAcceptanceFullReport">
+    <div class="container">
+        <form>
+            @*<div class="row">
+                    <div class="form-group col-sm-3">
+                        <label>From Date</label>
+                        <input type="date" class="form-control" ng-model="from_date" />
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>To Date</label>
+                        <input type="date" class="form-control" ng-model="to_date" />
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <button type="submit" class="btn btn-primary mb-2 btnSearch" ng-disabled="Search_Text===''" ng-click="GetGridRecord(from_date,to_date)">
+                            <span ng-show="searchButtonText == 'Searching'">
+                                <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                            </span>
+                            {{ searchButtonText }}
+                        </button>
+                    </div>
+                    <div class="form-group mb-2">
+
+                    </div>
+                </div>*@
+            <div class="row">
+
+
+                <div class="form-group col-sm-3">
+                    <label>UFC </label>
+                    <select class="form-control" ng-model="UFC_NAME_SEARCH" ng-options="item.UFC_NAME as item.UFC_NAME for item in ufc_list" ng-change="getEmployees(UFC_NAME_SEARCH)">
+                        <option value="" selected="selected"> SELECT</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+
+                    <label>RM Name </label>
+                    <select class="form-control" ng-model="EMP_NAME_SEARCH" ng-options="item.Code as item.Name for item in employee_list">
+                        <option value="" selected="selected"> SELECT</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>AUM Range</label>
+                    @*<select ng-model="AUM_BRACKET_SEARCH" id="aum_br" multiple>
+                <select id="aum_br" multiple>
+                <option ng-repeat="item in AUM_Bracket_list" value="{{item.AUM_BRACKET}}">{{item.AUM_BRACKET}}</option>
+            </select>*@
+                    <select name="aum_range" id="aum_br" class="form-control" multiple>
+                        <option value="Less Than 1 L">Less Than 1 L</option>
+                        <option value="Between 1L and 2L">Between 1L and 2L  </option>
+                        <option value="Between 2L and 5L">Between 2L and 5L</option>
+                        <option value="Between 5L and 10L">Between 5L and 10L</option>
+                        <option value="Between 10L and 15L">Between 10L and 15L</option>
+                        <option value="Between 15L and 20L">Between 15L and 20L</option>
+                        <option value="Between 20L and 25L">Between 20L and 25L</option>
+                        <option value="Between 25L and 1Cr">Between 25L and 1Cr</option>
+                        <option value="More than 1 Cr">More than 1 Cr</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                    <label>FOLIO STATUS </label>
+                    <select class="form-control" multiple id="folio_status">
+
+                        <option value="N">To Be Selected</option>
+                        <option value="C">CAMS KYC List - To be Confirmed from OPS</option>
+                        <option value="K">KFIN - KYC Validation Confirmation in Progress</option>
+                        <option value="S">Selected</option>
+                        <option value="R">Remediated</option>
+                        <option value="V">CVL Records shared with Zones</option>
+                        <option value="W">CVL Records shared with VRMs</option>
+                        <option value="D">Shared with Department of Posts</option>
+                        <option value="T">Folios with Transmission Done</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-3">
+
+                    <label>KYCFLAG </label>
+                    <select class="form-control" ng-model="KYCFLAG_SEARCH">
+                        <option value="" selected="selected"> SELECT</option>
+                        <option>KYC COMPLIED</option>
+                        <option>KYC NOTCOMPLIED</option>
+                        <option value="EXEMPTED">EXEMPTED</option>
+                    </select>
+
+                </div>
+                <div class="form-group col-sm-3">
+
+                    <label>AADHARSEEDINGFLAG </label>
+                    @*<select class="form-control" ng-model="AADHARSEEDINGFLAG_SEARCH" id="aadhar_flag" multiple>*@
+                    <select class="form-control" id="aadhar_flag" multiple>
+
+                        <option value="NOT LINKED">NOT LINKED</option>
+                        <option value="LINKED">LINKED</option>
+                        <option value="EXEMPTED">EXEMPTED</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+
+                    <label>BANK_FLAG </label>
+                    @*<select class="form-control" multiple ng-model="BANK_FLAG_SEARCH" id="bank_flag">*@
+                    <select class="form-control" multiple id="bank_flag">
+
+                        <option value="NOT AVAILABLE">NOT AVAILABLE</option>
+                        <option value="NOT VALID">NOT VALID</option>
+                        <option value="VALID"> VALID</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+
+                    <label>NOMINEEFLAG </label>
+                    <select class="form-control" ng-model="NOMINEEFLAG_SEARCH">
+                        <option value="" selected="selected"> SELECT</option>
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3 mt-4">
+                    <label> PRE/POST 2008 </label>
+                    <select class="form-control" ng-model="PRE_POST_2008">
+                        <option value="" selected="selected"> SELECT</option>
+                        <option value="PRE-2008">PRE-2008</option>
+                        <option value="POST-2008">POST-2008</option>
+                    </select>
+
+                </div>
+
+
+
+                <div class="form-group col-sm-3 mt-4">
+                    <label> Folio No. Search </label>
+                    <input type="text" value="" class="form-control" ng-model="FOLIONO_SEARCH" />
+                </div>
+                <div class="mx-sm-3 mb-4">
+                    <label>
+                        Enter Search Criteria <br> <span style="font-size: 10px;color: red;font-weight: 600;">(INVNAME | ARN CODE | ADDRESS_OF_FIRST_HOLDER)</span>
+                    </label>
+                    <input type="text" value="" class="form-control" ng-model="P_SEARCH_TEXT" />
+                </div>
+
+
+
+                <div class="form-group btnSearch">
+                    <button type="submit" class="btn btn-primary mb-2" ng-disabled="Search_Text===''" ng-click="GetGridRecord(FOLIONO_SEARCH, NOMINEEFLAG_SEARCH, KYCFLAG_SEARCH, UFC_NAME_SEARCH, EMP_NAME_SEARCH, P_SEARCH_TEXT,PRE_POST_2008)">
+                        <span ng-show="searchButtonText == 'Searching'">
+                            <img style="width:20px;height:20px;" src="~/images/loader.gif" />
+                        </span>
+                        {{ searchButtonText }}
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <br />
+    <div style="overflow:auto">
+        <table class="table table-hover table-bordered" id="table_id">
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <th>SR_NO</th>
+                    <th>AUM_BRACKET</th>
+                    <th>ACNO</th>
+                    <th>PAN</th>
+                    <th>JT1PAN</th>
+                    <th>JT2PAN</th>
+                    <th>KRA_GPAN</th>
+                    <th>DNR_PAN</th>
+                    <th>KRA_PAN_KYCSTATUS</th>
+                    <th>KRA_PAN1_KYCSTATUS</th>
+                    <th>KRA_PAN2_KYCSTATUS</th>
+                    <th>DNR_PAN_KYCSTATUS</th>
+                    <th>INVNAME</th>
+                    <th>JT1</th>
+                    <th>JT2</th>
+                    <th>DNR_NAME</th>
+                    <th>UFCCODE</th>
+                    <th>UFC_NAME</th>
+                    <th>PIN1</th>
+                    <th>MOBILE</th>
+                    <th>EMAIL</th>
+                    <th>REGIONDESC</th>
+                    <th>ZONEDESC</th>
+                    <th>MOHDESC</th>
+                    <th>FOLIO_MIN_DATE</th>
+                    <th>CONCAT_ADD</th>
+                    <th>SELECTED_REC</th>
+                    <th>SELECTED_EMPID</th>
+                    <th>EMPLOYEENAME</th>
+                    <th>SELECTION_DATE</th>
+                    <th>NOMINEEFLAG</th>
+                    <th>KYCFLAG</th>
+                    <th>AADHARSEEDINGFLAG</th>
+                    <th>BANK_FLAG</th>
+                    <th>ARN_CODE</th>
+                    <th>ARN_NAME</th>
+                    <th>ARN_MOBILE</th>
+                    <th>ARN_EMAIL</th>
+                    <th>INVESTED_SCHEMES</th>
+                    <th>PRE_POST_2008</th>
+                </tr>
+                <tr>
+                    <td style="visibility:hidden"> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td style="visibility:hidden"> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data_acceptance_full_grid_data track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.AUM_BRACKET}}</td>
+
+
+
+                    <td>{{item.ACNO}}</td>
+
+                    <td>{{item.PAN}}</td>
+                    <td>{{item.JT1PAN}}</td>
+                    <td>{{item.JT2PAN}}</td>
+
+
+                    <td>{{item.KRA_GPAN}}</td>
+                    <td>{{item.DNR_PAN}}</td>
+
+                    <td>{{item.KRA_PAN_KYCSTATUS}}</td>
+                    <td>{{item.KRA_PAN1_KYCSTATUS}}</td>
+                    <td>{{item.KRA_PAN2_KYCSTATUS}}</td>
+
+                    <td>{{item.DNR_PAN_KYCSTATUS}}</td>
+                    <td>{{item.INVNAME}}</td>
+                    <td>{{item.JT1}}</td>
+                    <td>{{item.JT2}}</td>
+
+                    <td>{{item.DNR_NAME}}</td>
+                    <td>{{item.UFCCODE}}</td>
+                    <td>{{item.UFC_NAME}}</td>
+                    <td>{{item.PIN1}}</td>
+
+                    <td>{{item.MOBILE}}</td>
+                    <td>{{item.EMAIL}}</td>
+                    <td>{{item.REGIONDESC}}</td>
+                    <td>{{item.ZONEDESC}}</td>
+
+                    <td>{{item.MOHDESC}}</td>
+
+                    <td>{{item.FOLIO_MIN_DATE}}</td>
+
+
+                    <td>{{item.CONCAT_ADD}}</td>
+                    <td>{{item.SELECTED_REC}}</td>
+                    <td>{{item.SELECTED_EMPID}}</td>
+                    <td>{{item.EMPLOYEENAME}}</td>
+                    <td>{{item.SELECTION_DATE}}</td>
+                    <td>{{item.NOMINEEFLAG}}</td>
+                    <td>{{item.KYCFLAG}}</td>
+                    <td>{{item.AADHARSEEDINGFLAG}}</td>
+                    <td>{{item.BANK_FLAG}}</td>
+                    <td>{{item.ARN_CODE}}</td>
+                    <td>{{item.ARN_NAME}}</td>
+                    <td>{{item.ARN_MOBILE}}</td>
+                    <td>{{item.ARN_EMAIL}}</td>
+                    <td>{{item.INVESTED_SCHEMES}}</td>
+                    <td>{{item.PRE_POST_2008}}</td>
+
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+
+        $('#bank_flag').multiselect({
+            search: true,
+            selectAll: true
+        });
+        $('#aum_br').multiselect({
+            search: true,
+            selectAll: true
+        });
+        $('#aadhar_flag').multiselect({
+            search: true,
+            selectAll: true
+        });
+        $('#folio_status').multiselect({
+            search: true,
+            selectAll: true
+        });
+
+    });
+
+</script>

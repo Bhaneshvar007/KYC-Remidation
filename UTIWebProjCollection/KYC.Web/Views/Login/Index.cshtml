@@ -1,0 +1,60 @@
+﻿@model KYC.Web.Models.LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PPS | Log in</title>
+
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    @* <link href="~/Content/style2.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @* <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
+    <script src="~/Scripts/jquery-2.2.3.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <style>
+        .has-error {
+            color: #c30808;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="loginbg" ng-controller="loginCtrl" ng-app="myApp2">
+    <br /><br />
+    <!------ Include the above in your HEAD tag ---------->
+    <div class="container col-md-4 text-center login1 shadow bg-white rounded">
+        <h3 class="m-0"><img src="~/images/logo.png" alt="Logo" /></h3>
+        <h3 class="text-primary mb-2"><strong>Polling Process System</strong></h3>
+        @using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="input-group col-md-12 mb-2">
+                @Html.TextBoxFor(m => m.UserID, new { @class = "form-control", @placeholder = "Email", required = "required" })
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="input-group col-md-12 mb-2">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", required = "required" })
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            if (!string.IsNullOrEmpty(ViewBag.errorMessage))
+            {  
+                <span class="has-error">@ViewBag.errorMessage</span>
+                <br />
+                <br />
+            }
+            <div class="col-md-12 mb-2">
+                <input type="submit" value="Log in" class="btn bg-dark text-white btn-block btn-flat" />
+            </div>
+        }
+    </div>
+</body>
+</html>

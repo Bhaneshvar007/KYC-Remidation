@@ -1,0 +1,4 @@
+C:\Users\AnilKumarChaudhary\Desktop\UTIWebProjCollection\KYC.Web\obj\Debug\KYC.Web.csproj.AssemblyReference.cache
+C:\Users\AnilKumarChaudhary\Desktop\UTIWebProjCollection\KYC.Web\obj\Debug\KYC.Web.csproj.CoreCompileInputs.cache
+D:\KYC Web Application\UTIWebProjCollection\UTIWebProjCollection\KYC.Web\obj\Debug\KYC.Web.csproj.AssemblyReference.cache
+D:\KYC Web Application\UTIWebProjCollection\UTIWebProjCollection\KYC.Web\obj\Debug\KYC.Web.csproj.CoreCompileInputs.cache

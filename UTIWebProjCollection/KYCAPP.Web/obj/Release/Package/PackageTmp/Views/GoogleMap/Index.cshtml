@@ -1,0 +1,181 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    body {
+        font-family: 'Open Sans',Arial;
+    }
+
+    #map {
+        width: 70%;
+        height: 100vh;
+        float: left;
+    }
+
+    #address-details {
+        width: 30%;
+        height: 35vh;
+        float: right;
+        padding: 10px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        background-color: #f58220;
+        color: white;
+    }
+
+    #address-list {
+        width: 30%;
+        height: 65vh;
+        float: right;
+        padding: 10px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        background-color: #0c4da2;
+        color: white;
+    }
+
+    .list-item {
+        cursor: pointer;
+        padding: 5px;
+        margin-bottom: 5px;
+        background-color: #f2f2f2;
+        color: #000;
+        border-radius: 5px;
+    }
+</style>
+
+<div id="map"></div>
+<div id="address-details">Please select any address.</div>
+<div id="address-list">No address is selected.</div>
+
+<script>
+    // Fetch JSON data from API
+    fetch('/GoogleMap/GetGoogleMapDetails')
+        .then(response => response.json())
+        .then(data => initializeMap(data))
+        .catch(error => console.log(error));
+
+    // Initialize the map and markers
+    function initializeMap(data) {
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 19.0760, lng: 72.8777 },
+            zoom: 15
+        });
+
+        const markers = [];
+        const addressDetails = document.getElementById('address-details');
+        const addressList = document.getElementById('address-list');
+
+        let selectedAddress; // Variable to store the selected address
+
+        // Display address details in the address details section
+        function showAddressDetails(address) {
+            addressDetails.innerHTML = `
+                    <h2>${address.address}</h2>
+                    <p>User ID: ${address.user_id}</p>
+                    <p>Latitude: ${address.latitude}</p>
+                    <p>Longitude: ${address.longitude}</p>
+                    <p>Marker Color: ${address.marker_color}</p>
+                `;
+        }
+
+        // Bounce the marker on click
+        function bounceMarker(marker) {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(() => {
+                marker.setAnimation(null);
+            }, 1500);
+        }
+
+        // Update the address list based on distance from the selected address
+        function updateAddressList(ifFirstTime) {
+            console.log('update address called');
+            dataForLoop = data;
+            if (!ifFirstTime) {
+                console.log('ifFirstTime', ifFirstTime);
+                // Calculate the distance between addresses and the selected address
+                data.forEach(item => {
+                    item.distance = calculateDistance(selectedAddress, item);
+                });
+                console.log('data', data);
+                // Sort the addresses based on distance
+                data.sort((a, b) => a.distance - b.distance);
+                const remainingAddresses = data.slice(1);
+                dataForLoop = remainingAddresses;
+            }
+            // Clear the address list
+            addressList.innerHTML = '';
+            console.log('remainingAddresses', data);
+            // Create list items for all addresses
+            dataForLoop.forEach(item => {
+                const listItem = document.createElement('div');
+                listItem.className = 'list-item';
+                listItem.textContent = item.address;
+
+                // Add click event listener to list item
+                listItem.addEventListener('click', () => {
+                    showAddressDetails(item);
+                    bounceMarker(markers[data.indexOf(item)]);
+                    selectedAddress = item; // Update the selected address
+                    updateAddressList(false);
+                });
+
+                addressList.appendChild(listItem);
+            });
+        }
+
+        // Calculate the distance between two addresses
+        function calculateDistance(address1, address2) {
+            // Perform the distance calculation based on the latitude and longitude of the addresses
+            const latDiff = address2.latitude - address1.latitude;
+            const lngDiff = address2.longitude - address1.longitude;
+            return Math.sqrt(latDiff * latDiff + lngDiff * lngDiff);
+        }
+
+        // Initialize the default selected address and update the address list
+        function initializeDefaultAddress() {
+            console.log('falsee')
+            //if (data.length > 0) {
+            //selectedAddress = data[0]; // Set the first address as the default selected address
+            //showAddressDetails(selectedAddress);
+            updateAddressList(true);
+            //}
+        }
+
+        // Create markers for all addresses
+        data.forEach(item => {
+            const marker = new google.maps.Marker({
+                position: { lat: item.latitude, lng: item.longitude },
+                map: map,
+                title: item.address,
+                icon: {
+                    url: 'marker3.png',
+                    scaledSize: new google.maps.Size(32, 32)
+                }
+            });
+
+            // Add click event listener to marker
+            marker.addListener('click', () => {
+                showAddressDetails(item);
+                bounceMarker(marker);
+                selectedAddress = item; // Update the selected address
+                updateAddressList(false);
+            });
+
+            markers.push(marker);
+        });
+
+        // Show all markers on the map
+        const bounds = new google.maps.LatLngBounds();
+        markers.forEach(marker => bounds.extend(marker.getPosition()));
+        map.fitBounds(bounds);
+
+        // Initialize the default selected address and update the address list
+        initializeDefaultAddress();
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZy_xb77RUTKb5qXUukWIo80cQtAhZpGA&callback=initializeMap" async defer></script>

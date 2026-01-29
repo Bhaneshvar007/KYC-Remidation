@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "KYC Remediation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+<style>
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        width: 150px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #383095;
+        border-color: #383095;
+    }
+
+    .btnSearch {
+        margin-top: 35px;
+        margin-left: 50px;
+    }
+</style>
+<div class="col-md-12 p-0">
+    <ul class="nav">
+        <li class="nav-item"> <a class="nav-link text-dark" href="javascript:void(0);"><strong>Statistics</strong></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="#">Selected Data Download</a> </li>
+    </ul>
+    <hr class="m-0">
+</div>
+
+<br />
+<div ng-app="myApp" ng-controller="DownloadReport">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label>From Date</label>
+                    <input type="date" class="form-control" id="FROM_DATE" ng-model="from_date" />
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>To Date</label>
+                    <input type="date" class="form-control" id="TO_DATE" ng-model="to_date" />
+                </div>
+
+                <div class="form-group col-sm-3">
+                    <label> File Format</label>
+                    <select ng-model="format_type" id="ReportType" ng-options="item as item.Name for item in download_formats" class="form-control"></select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label> Search Criteria</label>
+                    <input type="text" class="form-control" id="search_text" ng-model="Search_Text" />
+                </div>
+                <div class="form-group mx-sm-3 mb-4">
+
+                    <button type="button" class="btn btn-primary sm-2" id="exportSubmit">Download</button>
+                    @* <a class="button btn btn-primary form-control btnSearch" href="/KYCRemediation/DownloadPDF/{{format_type.Name}}/{{temp_from_date}}/{{temp_to_date}}" ng-disabled="format_type==='Select'">Download</a>*@
+                </div>
+                <div class="form-group mb-2">
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <form id="exportData" method="post" action="/KYCRemediation/DownloadPDF" style="display:none">
+        <input type="text" value="" name="from_date" />
+        <input type="text" value="" name="to_date" />
+        <input type="text" value="" name="format_types" />
+        <input type="text" value="" name="Search_Text" />
+    </form>
+    <script>
+        $("#exportSubmit").click(function () {
+
+
+            var FromDate = $("#FROM_DATE").val();
+            var ToDate = $("#TO_DATE").val();
+            var searchText = $("#search_text").val();
+            var ReportType = $("#ReportType option:selected").text();
+
+            if (ReportType === "Polling_Data" && file_name === "") {
+                alert("Please select the file ! ")
+                return;
+            }
+            else {
+                $("#exportData input[name=format_types]").val(ReportType);
+                $("#exportData input[name=from_date]").val(FromDate);
+                $("#exportData input[name=to_date]").val(ToDate);
+                $("#exportData input[name=Search_Text]").val(searchText);
+                $("#exportData").submit();
+            }
+        })
+    </script>
+</div>

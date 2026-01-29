@@ -1,0 +1,1 @@
+﻿var app = angular.module('myApp', ['toaster','validator', 'validator.rules']);

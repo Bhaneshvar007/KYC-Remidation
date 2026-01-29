@@ -1,0 +1,29 @@
+[
+  {
+    "application_code": "DTS",
+    "application_name": "Digital Transaction System imctest login",
+    "tenant_id": "0ad79175-b6f1-43aa-9b99-ec951442607b",
+    "client_id": "8eea0ad3-313e-4f94-900a-f7acaaf681bd",
+    "client_secret": "4T_8Q~daK2I8xG.sZElbXY2Ebk7vWX32Vz_Q0aUI",
+    "user_object_id": "3258c38f-9321-42f4-9894-66d21cf3db3a",
+    "email_id": "imctest@uti.co.in"
+  },
+  {
+    "application_code": "BANKSTATEMENT",
+    "application_name": "Digital Transaction System imctest login",
+    "tenant_id": "0ad79175-b6f1-43aa-9b99-ec951442607b",
+    "client_id": "8eea0ad3-313e-4f94-900a-f7acaaf681bd",
+    "client_secret": "4T_8Q~daK2I8xG.sZElbXY2Ebk7vWX32Vz_Q0aUI",
+    "user_object_id": "f08aefc4-5428-4e41-8f81-ad93b068f7e8",
+    "email_id": "bank.statements@uti.co.in"
+  },
+  {
+    "application_code": "BILAV_FEEDS",
+    "application_name": "Digital Transaction System imctest login",
+    "tenant_id": "0ad79175-b6f1-43aa-9b99-ec951442607b",
+    "client_id": "8eea0ad3-313e-4f94-900a-f7acaaf681bd",
+    "client_secret": "4T_8Q~daK2I8xG.sZElbXY2Ebk7vWX32Vz_Q0aUI",
+    "user_object_id": "54e0b1e7-580a-4f66-942e-a0c365111d6c",
+    "email_id": "bilav.feeds@uti.co.in"
+  }
+]
