@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Logout";
+    Layout = null;
+}
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f6f8;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .logout-container {
+        background: #ffffff;
+        padding: 40px 50px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        max-width: 420px;
+    }
+
+        .logout-container h2 {
+            margin-bottom: 12px;
+            color: #2c2c2c;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .logout-container p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+    .continue-text {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+        .continue-text a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            .continue-text a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<body>
+
+    <div class="logout-container">
+        <h2>You have been successfully logged out</h2>
+        <p>Your session has ended. Thank you for using our application.</p>
+
+        <p class="continue-text">
+            <a href="/HomePage/Index">Click here to continue to the website.</a>
+        </p>
+    </div>
+
+</body>

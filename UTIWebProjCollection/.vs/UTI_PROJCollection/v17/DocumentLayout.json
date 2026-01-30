@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|d:\\all cylsys project\\utiwebprojcollection\\utiwebprojcollection\\kycapp.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|d:\\all cylsys project\\utiwebprojcollection\\utiwebprojcollection\\kycapp.web\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|d:\\all cylsys project\\utiwebprojcollection\\utiwebprojcollection\\kycapp.web\\views\\login\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\views\\login\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\controllers\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\controllers\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|solutionrelative:kycapp.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{909C9EC6-F891-4245-847B-D9F9B7298BE7}|KYCAPP.Web\\KYCAPP.Web.csproj|D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\kycapp.web\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,11 +54,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Logout.cshtml",
+              "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Views\\Login\\Logout.cshtml",
+              "RelativeDocumentMoniker": "KYCAPP.Web\\Views\\Login\\Logout.cshtml",
+              "ToolTip": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Views\\Login\\Logout.cshtml",
+              "RelativeToolTip": "KYCAPP.Web\\Views\\Login\\Logout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-30T10:45:10.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Controllers\\HomeController.cs",
@@ -62,24 +79,24 @@
               "RelativeToolTip": "KYCAPP.Web\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T09:22:11.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-29T09:22:11.022Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "LoginController.cs",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Controllers\\LoginController.cs",
               "ToolTip": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Controllers\\LoginController.cs",
               "RelativeToolTip": "KYCAPP.Web\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCQAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowCUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T09:19:51.034Z"
+              "WhenOpened": "2026-01-29T09:19:51.034Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "KYCRecordStatusAbridgedReport.js",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Assets\\KYCRecordStatusAbridgedReport.js",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Assets\\KYCRecordStatusAbridgedReport.js",
@@ -91,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Startup.cs",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Startup.cs",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Startup.cs",
@@ -103,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ErrorPage.cshtml",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Views\\HomePage\\ErrorPage.cshtml",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Views\\HomePage\\ErrorPage.cshtml",
@@ -115,32 +132,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Login.cs",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Models\\Login.cs",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Models\\Login.cs",
               "ToolTip": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Models\\Login.cs",
               "RelativeToolTip": "KYCAPP.Web\\Models\\Login.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAlwCAAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T07:06:43.288Z"
+              "WhenOpened": "2026-01-28T07:06:43.288Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Web.config",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Web.config",
               "ToolTip": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Web.config",
               "RelativeToolTip": "KYCAPP.Web\\Web.config",
-              "ViewState": "AgIAACoAAAAAAAAAAAAUwDYAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwAsAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-01-28T07:06:25.97Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Views\\HomePage\\Index.cshtml",
               "RelativeDocumentMoniker": "KYCAPP.Web\\Views\\HomePage\\Index.cshtml",
@@ -152,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "RouteConfig.cs",
               "DocumentMoniker": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "KYCAPP.Web\\App_Start\\RouteConfig.cs",
@@ -170,7 +188,7 @@
               "RelativeDocumentMoniker": "KYCAPP.Web\\Controllers\\HomePageController.cs",
               "ToolTip": "D:\\All Cylsys Project\\UTIWebProjCollection\\UTIWebProjCollection\\KYCAPP.Web\\Controllers\\HomePageController.cs",
               "RelativeToolTip": "KYCAPP.Web\\Controllers\\HomePageController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAhwC8AAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwC8AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-28T06:36:20.412Z"
             }

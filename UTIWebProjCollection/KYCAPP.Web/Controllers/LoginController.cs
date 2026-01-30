@@ -33,8 +33,8 @@ namespace KYCAPP.Web.Controllers
             {
                 UserDetailsModel objmodel = bll.GetUserDetail(model.UserID, model.Password , false);
 
-                if (objmodel != null && model.Password == "JMXw@C6xPv")//uat  model.password
-                // if (objmodel != null)
+                //if (objmodel != null && model.Password == "JMXw@C6xPv")//uat  model.password
+                if (objmodel != null)
                 {       
                     Session["UserDetails"] = objmodel;
                     Session["login_code"] = objmodel.Code;
@@ -85,8 +85,8 @@ namespace KYCAPP.Web.Controllers
             Request.GetOwinContext().Authentication.SignOut(
                 CookieAuthenticationDefaults.AuthenticationType 
             );
-
-            return RedirectToAction("Index", "HomePage");
+            return View();
+            //return RedirectToAction("Index", "HomePage");
         }
 
         public ActionResult GenerateCaptcha()

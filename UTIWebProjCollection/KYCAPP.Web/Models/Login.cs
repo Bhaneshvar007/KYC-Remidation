@@ -30,7 +30,7 @@ namespace KYCAPP.Web.Models
             }
             else
             {
-                DT = DataAccess.ExecuteQuery("SELECT * from EMPLOYEE_LIST_FOR_KYC where LOWER(email_id) ='" + UserID + "'"); // This is for sso email // added by bahenshvar 22012026
+                DT = DataAccess.ExecuteQuery("SELECT * FROM EMPLOYEE_LIST_FOR_KYC WHERE LOWER(email_id) = LOWER('" + UserID + "')"); // This is for sso email // added by bahenshvar 22012026
             }
 
             // DataTable CMDT = DataAccess.ExecuteQuery("select EMP_ID,EMP_ROLE from DYNAMIC.mis_cuser_logs where valid_upto='30-DEC-9999' and emp_role in ('CM', 'RH', 'ZH') and employeecode ='" + UserID + "'");
@@ -102,7 +102,7 @@ namespace KYCAPP.Web.Models
             }
             catch (Exception ex)
             {
-                CommonHelper.WriteLog("error in Login > CheckUser() :" + ex.InnerException);
+                CommonHelper.WriteLog("error in Login > CheckUser() :" + ex.ToString());
                 status = false;
             }
             return status;

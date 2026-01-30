@@ -1654,6 +1654,7 @@
     <Content Include="Views\ContestLeadership\ContestLeadership.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />
     <Content Include="Views\HomePage\ErrorPage.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
